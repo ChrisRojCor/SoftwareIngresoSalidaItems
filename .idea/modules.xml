@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/SISIBack/SISIBack.iml" filepath="$PROJECT_DIR$/SISIBack/SISIBack.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SISIFront/SISIFront.iml" filepath="$PROJECT_DIR$/SISIFront/SISIFront.iml" />
+    </modules>
+  </component>
+</project>
