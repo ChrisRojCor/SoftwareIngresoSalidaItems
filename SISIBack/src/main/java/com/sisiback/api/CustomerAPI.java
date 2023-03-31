@@ -18,9 +18,7 @@ public class CustomerAPI {
     public void create(@RequestBody Customer customer){customerDAO.save(customer);}
 
     @GetMapping("/read")
-    public List<Customer> read(){
-        System.out.println("leyendo clientes de la base de datos");
-        return customerDAO.findAll();}
+    public List<Customer> read(){return customerDAO.findAll();}
 
     @DeleteMapping("delete/{id}")
     public void delete(@PathVariable Integer id){customerDAO.deleteById(id);}
