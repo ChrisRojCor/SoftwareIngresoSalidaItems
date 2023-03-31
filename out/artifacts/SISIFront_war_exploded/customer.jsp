@@ -13,8 +13,10 @@
 </div>
 
 <div>
+
+    <h1 align="center" >Registro de Clientes</h1>
     <form method="get" action="./CustomerServlet">
-        <table>
+        <table align="center">
             <tr>
                 <td><label># Nit Cliente:</label></td>
                 <td><input type="text" name="id"></td>
