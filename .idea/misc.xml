@@ -4,6 +4,7 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/SISIBack/pom.xml" />
+        <option value="$PROJECT_DIR$/SISIFront/pom.xml" />
       </list>
     </option>
   </component>

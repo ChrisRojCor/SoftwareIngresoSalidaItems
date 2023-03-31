@@ -7,10 +7,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="SISIBack" />
+        <module name="SISIFront" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="SISIBack" target="17" />
+      <module name="SISIFront" target="9" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

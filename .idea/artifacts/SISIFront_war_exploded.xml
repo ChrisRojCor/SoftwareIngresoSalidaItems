@@ -1,0 +1,20 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" build-on-make="true" name="SISIFront:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/SISIFront_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="SISIFront" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: net.minidev:json-smart:2.4.10" />
+          <element id="library" level="project" name="Maven: net.minidev:accessors-smart:2.4.9" />
+          <element id="library" level="project" name="Maven: org.ow2.asm:asm:9.3" />
+          <element id="library" level="project" name="Maven: org.apache.tomcat:tomcat-annotations-api:10.1.7" />
+          <element id="library" level="project" name="catalina" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="SISIFront/web/Web" />
+    </root>
+  </artifact>
+</component>
