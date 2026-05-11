@@ -7,16 +7,23 @@ import jakarta.persistence.Id;
 public class Item {
 
     @Id
-    private int id;
+    private String id;
     private String name;
     private String model;
     private String brand;
+    private String customerId;
+    private String date;
+    private String customerName;
+    private String phone;
+    private String comment;
+    private String service;
+    private String serviceNumber;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -42,5 +49,78 @@ public class Item {
 
     public void setBrand(String brand) {
         this.brand = brand;
+    }
+
+    public String getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(String customerId) {
+        this.customerId = customerId;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public String getService() {
+        return service;
+    }
+
+    public void setService(String service) {
+        this.service = service;
+    }
+
+    public String getServiceNumber() {
+        return serviceNumber;
+    }
+
+    public void setServiceNumber(String serviceNumber) {
+        this.serviceNumber = serviceNumber;
+    }
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", model='" + model + '\'' +
+                ", brand='" + brand + '\'' +
+                ", customerId='" + customerId + '\'' +
+                ", date='" + date + '\'' +
+                ", customerName='" + customerName + '\'' +
+                ", phone='" + phone + '\'' +
+                ", comment='" + comment + '\'' +
+                ", service='" + service + '\'' +
+                ", serviceNumber='" + serviceNumber + '\'' +
+                '}';
     }
 }

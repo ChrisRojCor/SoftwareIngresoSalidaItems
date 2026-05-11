@@ -7,33 +7,24 @@ import jakarta.persistence.Id;
 public class Customer {
 
     @Id
-    private int id;
-    private String tradeName;
+    private String id;
     private String customerName;
     private String businessName;
     private String taxpayerType;
     private String ciiu;
-    private int phone;
+    private String phone;
     private String contactEmail;
     private String billingEmail;
     private String address;
     private String city;
     private String department;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
-    }
-
-    public String getTradeName() {
-        return tradeName;
-    }
-
-    public void setTradeName(String tradeName) {
-        this.tradeName = tradeName;
     }
 
     public String getCustomerName() {
@@ -68,11 +59,11 @@ public class Customer {
         this.ciiu = ciiu;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
@@ -114,5 +105,22 @@ public class Customer {
 
     public void setDepartment(String department) {
         this.department = department;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", customerName='" + customerName + '\'' +
+                ", businessName='" + businessName + '\'' +
+                ", taxpayerType='" + taxpayerType + '\'' +
+                ", ciiu='" + ciiu + '\'' +
+                ", phone=" + phone +
+                ", contactEmail='" + contactEmail + '\'' +
+                ", billingEmail='" + billingEmail + '\'' +
+                ", address='" + address + '\'' +
+                ", city='" + city + '\'' +
+                ", department='" + department + '\'' +
+                '}';
     }
 }

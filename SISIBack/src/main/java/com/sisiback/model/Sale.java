@@ -1,46 +1,98 @@
 package com.sisiback.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
 public class Sale {
 
     @Id
-    private int orderNumber;
-    private int amount;
-    private String service;
-    private int discount;
+    private int numeroServicio;
+    private String nombreItem;
+    private int cantidad;
+    private String servicio;
+    private int descuento;
+    private float precio;
+    private float totalSinDescuento;
+    private float totalConDescuento;
 
-    public int getOrderNumber() {
-        return orderNumber;
+    public int getNumeroServicio() {
+        return numeroServicio;
     }
 
-    public void setOrderNumber(int orderNumber) {
-        this.orderNumber = orderNumber;
+    public void setNumeroServicio(int numeroServicio) {
+        this.numeroServicio = numeroServicio;
     }
 
-    public int getAmount() {
-        return amount;
+    public String getNombreItem() {
+        return nombreItem;
     }
 
-    public void setAmount(int amount) {
-        this.amount = amount;
+    public void setNombreItem(String nombreItem) {
+        this.nombreItem = nombreItem;
     }
 
-    public String getService() {
-        return service;
+    public int getCantidad() {
+        return cantidad;
     }
 
-    public void setService(String service) {
-        this.service = service;
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
     }
 
-    public int getDiscount() {
-        return discount;
+    public String getServicio() {
+        return servicio;
     }
 
-    public void setDiscount(int discount) {
-        this.discount = discount;
+    public void setServicio(String servicio) {
+        this.servicio = servicio;
+    }
+
+    public int getDescuento() {
+        return descuento;
+    }
+
+    public void setDescuento(int descuento) {
+        this.descuento = descuento;
+    }
+
+    public float getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(float precio) {
+        this.precio = precio;
+    }
+
+    public float getTotalSinDescuento() {
+        return totalSinDescuento;
+    }
+
+    public void setTotalSinDescuento(float totalSinDescuento) {
+        this.totalSinDescuento = totalSinDescuento;
+    }
+
+    public float getTotalConDescuento() {
+        return totalConDescuento;
+    }
+
+    public void setTotalConDescuento(float totalConDescuento) {
+        this.totalConDescuento = totalConDescuento;
+    }
+
+    @Override
+    public String toString() {
+        return "Sale{" +
+                "numeroServicio=" + numeroServicio +
+                ", nombreItem='" + nombreItem + '\'' +
+                ", cantidad=" + cantidad +
+                ", servicio='" + servicio + '\'' +
+                ", descuento=" + descuento +
+                ", precio=" + precio +
+                ", totalSinDescuento=" + totalSinDescuento +
+                ", totalConDescuento=" + totalConDescuento +
+                '}';
     }
 }

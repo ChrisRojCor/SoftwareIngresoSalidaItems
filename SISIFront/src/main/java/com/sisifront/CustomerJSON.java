@@ -18,7 +18,7 @@ import java.util.Iterator;
 public class CustomerJSON {
 
     private static URL url;
-    private static String site = "http//localhost:5000/";
+    private static String site = "http://localhost:3000/";
 
     public static ArrayList<Customer> parsingCustomer(String json) throws net.minidev.json.parser.ParseException {
         JSONParser jsonParser = new JSONParser();
@@ -29,7 +29,6 @@ public class CustomerJSON {
             JSONObject innerObj =(JSONObject) i.next();
             Customer customer1 = new Customer();
             customer1.setId(innerObj.get("id").toString());
-            customer1.setTradeName(innerObj.get("tradeName").toString());
             customer1.setCustomerName(innerObj.get("customerName").toString());
             customer1.setBusinessName(innerObj.get("businessName").toString());
             customer1.setTaxpayerType(innerObj.get("taxpayerType").toString());
@@ -65,7 +64,7 @@ public class CustomerJSON {
     }
 
     public static int postJSON(Customer customer) throws IOException{
-        url = new URL(site+"customer/save");
+        url = new URL(site+"customer/create");
         HttpURLConnection http;
         http = (HttpURLConnection) url.openConnection();
         try{
@@ -74,23 +73,22 @@ public class CustomerJSON {
             e.printStackTrace();
         }
         http.setDoOutput(true);
-        http.setRequestProperty("Accept", "applicatio/json");
-        http.setRequestProperty("Content-Type", "applicario/json");
+        http.setRequestProperty("Accept", "application/json");
+        http.setRequestProperty("Content-Type", "application/json");
 
-        String data = "{"
-                +"\"id\":\""+ customer.getId()
-                +"\"tradeName\":\""+ customer.getTradeName()
-                +"\"customerName\":\""+ customer.getId()
-                +"\"businessName\":\""+ customer.getBusinessName()
-                +"\"taxpayerType\":\""+ customer.getTaxpayerType()
-                +"\"ciiu\":\""+ customer.getCiiu()
-                +"\"phone\":\""+ customer.getPhone()
-                +"\"contactEmail\":\""+ customer.getContactEmail()
-                +"\"billingEmail\":\""+ customer.getBillingEmail()
-                +"\"address\":\""+ customer.getAddress()
-                +"\"city\":\""+ customer.getCity()
-                +"\"department\":\""+ customer.getDepartment()
+        String data = "{\"id\":\"" + customer.getId()
+                + "\",\"customerName\":\"" + customer.getCustomerName()
+                + "\",\"businessName\":\"" + customer.getBusinessName()
+                + "\",\"taxpayerType\":\"" + customer.getTaxpayerType()
+                + "\",\"ciiu\":\"" + customer.getCiiu()
+                + "\",\"phone\":\"" + customer.getPhone()
+                + "\",\"contactEmail\":\"" + customer.getContactEmail()
+                + "\",\"billingEmail\":\"" + customer.getBillingEmail()
+                + "\",\"address\":\"" + customer.getAddress()
+                + "\",\"city\":\"" + customer.getCity()
+                + "\",\"department\":\"" + customer.getDepartment()
                 + "\"}";
+        System.out.println("Datos del string del registro del cliente\n" + data);
 
         byte[] out = data.getBytes(StandardCharsets.UTF_8);
         OutputStream stream = http.getOutputStream();
@@ -131,8 +129,7 @@ public class CustomerJSON {
         http.setRequestProperty("Content-Type", "application/json");
         String data = "{"
                 +"\"id\":\""+ customer.getId()
-                +"\"tradeName\":\""+ customer.getTradeName()
-                +"\"customerName\":\""+ customer.getId()
+                +"\"customerName\":\""+ customer.getCustomerName()
                 +"\"businessName\":\""+ customer.getBusinessName()
                 +"\"taxpayerType\":\""+ customer.getTaxpayerType()
                 +"\"ciiu\":\""+ customer.getCiiu()

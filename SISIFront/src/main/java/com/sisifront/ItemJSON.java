@@ -18,7 +18,7 @@ import java.util.Iterator;
 public class ItemJSON {
 
     private static URL url;
-    private static String site = "http//localhost:5000/";
+    private static String site = "http://localhost:3000/";
 
     public static ArrayList<Item> parsingItem(String json) throws net.minidev.json.parser.ParseException {
         JSONParser jsonParser = new JSONParser();
@@ -32,6 +32,7 @@ public class ItemJSON {
             item1.setName(innerObj.get("name").toString());
             item1.setModel(innerObj.get("model").toString());
             item1.setBrand(innerObj.get("brand").toString());
+            item1.setService(innerObj.get("service").toString());
 
         }
         return list;
@@ -57,7 +58,7 @@ public class ItemJSON {
     }
 
     public static int postJSON(Item item) throws IOException{
-        url = new URL(site+"item/save");
+        url = new URL(site+"item/create");
         HttpURLConnection http;
         http = (HttpURLConnection) url.openConnection();
         try{
@@ -66,21 +67,38 @@ public class ItemJSON {
             e.printStackTrace();
         }
         http.setDoOutput(true);
-        http.setRequestProperty("Accept", "applicatio/json");
-        http.setRequestProperty("Content-Type", "applicario/json");
+        http.setRequestProperty("Accept", "application/json");
+        http.setRequestProperty("Content-Type", "application/json");
 
-        String data = "{"
+        //String con error
+        /**String data = "{"
                 +"\"id\":\""+ item.getId()
                 +"\"name\":\""+ item.getName()
                 +"\"model\":\""+ item.getModel()
                 +"\"brand\":\""+ item.getBrand()
-                + "\"}";
+                + "\"}";**/
+
+        String data = "{"
+                + "\"id\":\"" + item.getId() + "\","
+                + "\"name\":\"" + item.getName() + "\","
+                + "\"model\":\"" + item.getModel() + "\","
+                + "\"brand\":\"" + item.getBrand() + "\","
+                + "\"service\":\"" + item.getService() + "\","
+                + "\"serviceNumber\":\"" + item.getServiceNumber() + "\","
+                + "\"customerId\":\"" + item.getCustomerId() + "\","
+                + "\"date\":\"" + item.getDate() + "\","
+                + "\"customerName\":\"" + item.getCustomerName() + "\","
+                + "\"phone\":\"" + item.getPhone() + "\","
+                + "\"comment\":\"" + item.getComment() + "\""
+                +"}";
+
 
         byte[] out = data.getBytes(StandardCharsets.UTF_8);
         OutputStream stream = http.getOutputStream();
         stream.write(out);
         int response = http.getResponseCode();
         http.disconnect();
+        System.out.println(data);
         return response;
     }
 

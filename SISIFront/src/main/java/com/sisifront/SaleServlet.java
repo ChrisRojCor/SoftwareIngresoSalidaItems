@@ -14,12 +14,20 @@ public class SaleServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.getWriter().append("Served at: ").append(request.getContextPath());
+        response.getWriter().append("Served at: sale").append(request.getContextPath());
         PrintWriter writer = response.getWriter();
 
+        try{
+            addSale(request, response);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        //if comprobación de botón
+        /**
         if(request.getParameter("saveButton") != null) {
             addSale(request, response);
-        }
+        }**/
     }
 
     @Override
@@ -27,19 +35,19 @@ public class SaleServlet extends HttpServlet {
 
     }
 
-    public void addSale(HttpServletRequest request, HttpServletResponse response) {
+    public void addSale(HttpServletRequest request, HttpServletResponse response) throws IOException {
         Sale sale = new Sale();
         sale.setOrderNumber(request.getParameter("orderNumber"));
         sale.setAmount(request.getParameter("amount"));
         sale.setService(request.getParameter("service"));
         sale.setDiscount(request.getParameter("discount"));
+        response.sendRedirect(request.getContextPath() + "/sale.jsp");
         int respuesta = 0;
         try {
             respuesta = SaleJSON.postJSON(sale);
             PrintWriter writer = response.getWriter();
             if (respuesta == 200) {
                 writer.println("Registro Agregado!");
-                response.sendRedirect(request.getContextPath() + "/sale.jsp");
             }else {
                 writer.println("Error: "+ respuesta);
             }

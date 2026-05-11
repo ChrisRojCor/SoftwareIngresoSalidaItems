@@ -14,12 +14,19 @@ public class CustomerServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.getWriter().append("Served at: ").append(request.getContextPath());
+        response.getWriter().append("Served at: customer").append(request.getContextPath());
         PrintWriter writer = response.getWriter();
 
-        if(request.getParameter("saveButton") != null) {
+        try{
             addCustomer(request, response);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+
+        // if verificación botón
+        /**if(request.getParameter("saveButton") != null) {
+            addCustomer(request, response);
+        }**/
     }
 
     @Override
@@ -27,10 +34,11 @@ public class CustomerServlet extends HttpServlet {
 
     }
 
-    public void addCustomer(HttpServletRequest request, HttpServletResponse response) {
+    public void addCustomer(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+
         Customer customer = new Customer();
         customer.setId(request.getParameter("id"));
-        customer.setTradeName(request.getParameter("tradeName"));
         customer.setCustomerName(request.getParameter("customerName"));
         customer.setBusinessName(request.getParameter("businessName"));
         customer.setTaxpayerType(request.getParameter("taxpayerType"));
@@ -41,13 +49,13 @@ public class CustomerServlet extends HttpServlet {
         customer.setAddress(request.getParameter("address"));
         customer.setCity(request.getParameter("city"));
         customer.setDepartment(request.getParameter("department"));
+        response.sendRedirect(request.getContextPath() + "/customer.jsp");
         int respuesta = 0;
         try {
             respuesta = CustomerJSON.postJSON(customer);
             PrintWriter writer = response.getWriter();
             if (respuesta == 200) {
                 writer.println("Registro Agregado!");
-                response.sendRedirect(request.getContextPath() + "/customer.jsp");
             }else {
                 writer.println("Error: "+ respuesta);
             }

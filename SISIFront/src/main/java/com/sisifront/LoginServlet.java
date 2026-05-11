@@ -14,16 +14,15 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        response.getWriter().append("Served at: login").append(request.getContextPath());
-        String usuario = request.getParameter("user");
-        String contraseña = request.getParameter("password");
+        response.getWriter().append("Served at: index").append(request.getContextPath());
+        String usuario = request.getParameter("usuario");
+        String contraseña = request.getParameter("contraseña");
 
         try {
             ArrayList<User> user = UserJSON.getJSON();
-            boolean userRegistered = user.stream().anyMatch(dbUsuario -> dbUsuario.getUser().equals(usuario) && dbUsuario.getPassword().equals(contraseña));
-
+            boolean userRegistered = user.stream().anyMatch(dbUsuario -> dbUsuario.getUserName().equals(usuario) && dbUsuario.getPassword().equals(contraseña));
             if(userRegistered){
-                response.sendRedirect(request.getContextPath() + "/customer.jsp");
+                response.sendRedirect(request.getContextPath() + "/item.jsp");
             } else {
                 response.sendRedirect(request.getContextPath() + "/index.jsp");
             }

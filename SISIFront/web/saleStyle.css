@@ -1,0 +1,73 @@
+input {
+    width: auto;
+}
+
+label {
+    width: auto;
+}
+
+.titulos {
+    text-align: center;
+}
+
+.subtitulos {
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+.info {
+    text-align: center;
+}
+
+table {
+    width: 95%;
+    max-width: 95%;
+    margin: 0 auto;
+    margin-top: 5%;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th {
+    width: 10%;
+    max-width: 10%;
+    border: 1px solid black;
+    word-wrap: break-word;
+}
+
+td {
+    font-size: 14px;
+    text-align: center;
+    border: 1px solid black;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+h2 {
+    text-align: center;
+}
+
+.datos {
+    box-shadow: none;
+    border: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Espacio entre elementos */
+    margin-left: 15vh;
+    margin-right: 15vh;
+}
+
+.datos label,
+.datos input {
+    display: block;
+    width: calc(16.666% - 20px); /* Ancho para 3 elementos por fila */
+    margin-bottom: 10px;
+}
+
+.datos label {
+    text-align: right;
+}
+
+.botones {
+    box-shadow: none;
+    border: none;
+}

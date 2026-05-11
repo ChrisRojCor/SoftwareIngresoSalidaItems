@@ -1,0 +1,12 @@
+# Compilados de Java
+*.class
+target/
+out/
+
+# Configuración de IDEs
+.idea/
+*.iml
+
+# Archivos temporales de sistema
+.DS_Store
+Thumbs.db

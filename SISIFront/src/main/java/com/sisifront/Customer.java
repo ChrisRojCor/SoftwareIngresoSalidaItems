@@ -3,7 +3,6 @@ package com.sisifront;
 public class Customer {
 
     private String id;
-    private String tradeName;
     private String customerName;
     private String businessName;
     private String taxpayerType;
@@ -21,14 +20,6 @@ public class Customer {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getTradeName() {
-        return tradeName;
-    }
-
-    public void setTradeName(String tradeName) {
-        this.tradeName = tradeName;
     }
 
     public String getCustomerName() {

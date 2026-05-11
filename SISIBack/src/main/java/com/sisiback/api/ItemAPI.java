@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("item")
+@CrossOrigin(origins = "*") //Permitir solicitudes CORS Policy
 public class ItemAPI {
 
     @Autowired

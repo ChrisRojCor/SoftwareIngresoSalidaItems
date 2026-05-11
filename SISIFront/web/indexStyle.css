@@ -1,0 +1,49 @@
+body {
+    background-color: #E6E9EC;
+    background-image: url("background.png");
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+}
+
+div {
+    width: 50%;
+    max-width: 335px;
+    min-width: 225px;
+    height: 375px;
+    text-align: center;
+    background-color: white;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: normal;
+
+}
+
+.campos {
+    text-align: center;
+    display: block;
+    border: 1px solid black;
+    margin: 36px auto;
+    width: 200px;
+    height: 25px;    
+}
+
+.campos::placeholder {
+    text-align: center;
+}
+
+.aceptar {
+    width: 100px;
+    height: 25px;
+}

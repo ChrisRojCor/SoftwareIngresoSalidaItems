@@ -4,7 +4,6 @@ import net.minidev.json.JSONArray;
 import net.minidev.json.JSONObject;
 import net.minidev.json.parser.JSONParser;
 import net.minidev.json.parser.ParseException;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -18,7 +17,7 @@ import java.util.Iterator;
 public class SaleJSON {
 
     private static URL url;
-    private static String site = "http//localhost:5000/";
+    private static String site = "http://localhost:3000/";
 
     public static ArrayList<Sale> parsingSale(String json) throws ParseException {
         JSONParser jsonParser = new JSONParser();
@@ -57,7 +56,7 @@ public class SaleJSON {
     }
 
     public static int postJSON(Sale sale) throws IOException{
-        url = new URL(site+"sale/save");
+        url = new URL(site+"sale/create");
         HttpURLConnection http;
         http = (HttpURLConnection) url.openConnection();
         try{
@@ -66,14 +65,13 @@ public class SaleJSON {
             e.printStackTrace();
         }
         http.setDoOutput(true);
-        http.setRequestProperty("Accept", "applicatio/json");
-        http.setRequestProperty("Content-Type", "applicario/json");
+        http.setRequestProperty("Accept", "application/json");
+        http.setRequestProperty("Content-Type", "application/json");
 
-        String data = "{"
-                +"\"orderNumber\":\""+ sale.getOrderNumber()
-                +"\"amount\":\""+ sale.getAmount()
-                +"\"service\":\""+ sale.getService()
-                +"\"discount\":\""+ sale.getDiscount()
+        String data = "{\"orderNumber\":\"" + sale.getOrderNumber()
+                + "\",\"amount\":\"" + sale.getAmount()
+                + "\",\"service\":\"" + sale.getService()
+                + "\",\"discount\":\"" + sale.getDiscount()
                 + "\"}";
 
         byte[] out = data.getBytes(StandardCharsets.UTF_8);
