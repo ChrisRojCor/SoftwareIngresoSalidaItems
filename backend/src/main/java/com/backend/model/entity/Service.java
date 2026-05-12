@@ -10,6 +10,9 @@ import jakarta.persistence.TemporalType;
 
 import java.util.Date;
 
+import com.backend.model.enums.ServiceType;
+import com.backend.model.enums.ServiceStatus;
+
 @Entity
 public class Service {
 

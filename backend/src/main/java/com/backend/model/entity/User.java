@@ -5,6 +5,8 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Id;
 
+import com.backend.model.enums.UserRole;
+
 @Entity
 public class User {
 
