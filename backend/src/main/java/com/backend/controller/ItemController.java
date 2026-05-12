@@ -21,7 +21,7 @@ public class ItemController {
     public List<Item> read(){ return itemRepository.findAll();}
 
     @DeleteMapping("delete/{id}")
-    public void delete(@PathVariable Integer id){itemRepository.deleteById(id);}
+    public void delete(@PathVariable String id){itemRepository.deleteById(id);}
 
     @PutMapping("/update")
     public void update(@RequestBody Item item){itemRepository.save(item);}

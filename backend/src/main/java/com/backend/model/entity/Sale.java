@@ -3,14 +3,15 @@ package com.backend.model.entity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
+import java.math.BigDecimal;
+
 @Entity
 public class Sale {
 
     @Id
     private int orderNumber;
-    private int amount;
-    private String service;
-    private int discount;
+    private BigDecimal amount;
+    private BigDecimal discount;
 
     public int getOrderNumber() {
         return orderNumber;
@@ -20,27 +21,19 @@ public class Sale {
         this.orderNumber = orderNumber;
     }
 
-    public int getAmount() {
+    public BigDecimal getAmount() {
         return amount;
     }
 
-    public void setAmount(int amount) {
+    public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
 
-    public String getService() {
-        return service;
-    }
-
-    public void setService(String service) {
-        this.service = service;
-    }
-
-    public int getDiscount() {
+    public BigDecimal getDiscount() {
         return discount;
     }
 
-    public void setDiscount(int discount) {
+    public void setDiscount(BigDecimal discount) {
         this.discount = discount;
     }
 }
