@@ -30,17 +30,12 @@ public class CustomerServlet extends HttpServlet {
     public void addCustomer(HttpServletRequest request, HttpServletResponse response) {
         Customer customer = new Customer();
         customer.setId(request.getParameter("id"));
-        customer.setTradeName(request.getParameter("tradeName"));
         customer.setCustomerName(request.getParameter("customerName"));
         customer.setBusinessName(request.getParameter("businessName"));
-        customer.setTaxpayerType(request.getParameter("taxpayerType"));
-        customer.setCiiu(request.getParameter("ciiu"));
         customer.setPhone(request.getParameter("phone"));
         customer.setContactEmail(request.getParameter("contactEmail"));
-        customer.setBillingEmail(request.getParameter("billingEmail"));
         customer.setAddress(request.getParameter("address"));
         customer.setCity(request.getParameter("city"));
-        customer.setDepartment(request.getParameter("department"));
         int respuesta = 0;
         try {
             respuesta = CustomerJSON.postJSON(customer);

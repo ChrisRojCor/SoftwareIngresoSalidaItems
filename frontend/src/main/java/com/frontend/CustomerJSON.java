@@ -29,17 +29,12 @@ public class CustomerJSON {
             JSONObject innerObj =(JSONObject) i.next();
             Customer customer1 = new Customer();
             customer1.setId(innerObj.get("id").toString());
-            customer1.setTradeName(innerObj.get("tradeName").toString());
             customer1.setCustomerName(innerObj.get("customerName").toString());
             customer1.setBusinessName(innerObj.get("businessName").toString());
-            customer1.setTaxpayerType(innerObj.get("taxpayerType").toString());
-            customer1.setCiiu(innerObj.get("ciiu").toString());
             customer1.setPhone(innerObj.get("phone").toString());
             customer1.setContactEmail(innerObj.get("contactEmail").toString());
-            customer1.setBillingEmail(innerObj.get("billingEmail").toString());
             customer1.setAddress(innerObj.get("address").toString());
             customer1.setCity(innerObj.get("city").toString());
-            customer1.setDepartment(innerObj.get("department").toString());
 
         }
         return list;
@@ -79,17 +74,12 @@ public class CustomerJSON {
 
         String data = "{"
                 +"\"id\":\""+ customer.getId()
-                +"\"tradeName\":\""+ customer.getTradeName()
-                +"\"customerName\":\""+ customer.getId()
+                +"\"customerName\":\""+ customer.getCustomerName()
                 +"\"businessName\":\""+ customer.getBusinessName()
-                +"\"taxpayerType\":\""+ customer.getTaxpayerType()
-                +"\"ciiu\":\""+ customer.getCiiu()
                 +"\"phone\":\""+ customer.getPhone()
                 +"\"contactEmail\":\""+ customer.getContactEmail()
-                +"\"billingEmail\":\""+ customer.getBillingEmail()
                 +"\"address\":\""+ customer.getAddress()
                 +"\"city\":\""+ customer.getCity()
-                +"\"department\":\""+ customer.getDepartment()
                 + "\"}";
 
         byte[] out = data.getBytes(StandardCharsets.UTF_8);
@@ -131,17 +121,12 @@ public class CustomerJSON {
         http.setRequestProperty("Content-Type", "application/json");
         String data = "{"
                 +"\"id\":\""+ customer.getId()
-                +"\"tradeName\":\""+ customer.getTradeName()
-                +"\"customerName\":\""+ customer.getId()
+                +"\"customerName\":\""+ customer.getCustomerName()
                 +"\"businessName\":\""+ customer.getBusinessName()
-                +"\"taxpayerType\":\""+ customer.getTaxpayerType()
-                +"\"ciiu\":\""+ customer.getCiiu()
                 +"\"phone\":\""+ customer.getPhone()
                 +"\"contactEmail\":\""+ customer.getContactEmail()
-                +"\"billingEmail\":\""+ customer.getBillingEmail()
                 +"\"address\":\""+ customer.getAddress()
                 +"\"city\":\""+ customer.getCity()
-                +"\"department\":\""+ customer.getDepartment()
                 + "\"}";
 
         byte[] out = data.getBytes(StandardCharsets.UTF_8);

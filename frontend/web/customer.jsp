@@ -25,38 +25,17 @@
             </tr>
 
             <tr>
-                <td><label>Nombre Comercial:</label></td>
-                <td><input type="text" name="tradeName"></td>
+                <td><label>Nombre Cliente:</label></td>
+                <td><input type="text" name="customerName"></td>
                 <td><label>Correo Contacto:</label></td>
                 <td><input type="text" name="contactEmail"></td>
             </tr>
 
             <tr>
-                <td><label>Nombre Cliente:</label></td>
-                <td><input type="text" name="customerName"></td>
-                <td><label>Correo Facturación:</label></td>
-                <td><input type="text" name="billinEmail"></td>
-            </tr>
-
-            <tr>
-                <td><label>Tipo Contribuyente:</label></td>
-                <td><input type="text" name="taxpayerType"></td>
                 <td><label>Dirección:</label></td>
                 <td><input type="text" name="address"></td>
-            </tr>
-
-            <tr>
-                <td><label>Código Actividad Principal:</label></td>
-                <td><input type="text" name="ciiu"></td>
                 <td><label>Ciudad:</label></td>
                 <td><input type="text" name="city"></td>
-            </tr>
-
-            <tr>
-                <td><label>Departamento:</label></td>
-                <td><input type="text" name="department"></td>
-                <td><label>Observaciones:</label></td>
-                <td><input type="text" name="comment"></td>
             </tr>
 
             <tr>
