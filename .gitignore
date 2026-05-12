@@ -97,3 +97,6 @@ local.properties
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# utils
+docs-local/
