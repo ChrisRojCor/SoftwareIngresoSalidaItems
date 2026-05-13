@@ -7,7 +7,7 @@ import jakarta.persistence.Id;
 public class Customer {
 
     @Id
-    private int id;
+    private String id;
     private String customerName;
     private String businessName;
     private String phone;
@@ -15,11 +15,11 @@ public class Customer {
     private String address;
     private String city;
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

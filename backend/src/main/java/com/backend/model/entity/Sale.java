@@ -9,16 +9,16 @@ import java.math.BigDecimal;
 public class Sale {
 
     @Id
-    private int orderNumber;
+    private int saleNumber;
     private BigDecimal amount;
     private BigDecimal discount;
 
-    public int getOrderNumber() {
-        return orderNumber;
+    public int getSaleNumber() {
+        return saleNumber;
     }
 
-    public void setOrderNumber(int orderNumber) {
-        this.orderNumber = orderNumber;
+    public void setSaleNumber(int orderNumber) {
+        this.saleNumber = orderNumber;
     }
 
     public BigDecimal getAmount() {

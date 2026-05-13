@@ -1,12 +1,6 @@
 package com.backend.model.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+import jakarta.persistence.*;
 
 import java.util.Date;
 
@@ -14,9 +8,10 @@ import com.backend.model.enums.ServiceType;
 import com.backend.model.enums.ServiceStatus;
 
 @Entity
-public class Service {
+public class OrderService {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int serviceNumber;
     @Temporal(TemporalType.DATE)
     private Date date;
