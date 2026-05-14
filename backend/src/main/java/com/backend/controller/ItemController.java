@@ -1,8 +1,7 @@
 package com.backend.controller;
 
-import com.backend.repository.ItemRepository;
 import com.backend.model.entity.Item;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.backend.service.ItemService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,18 +10,26 @@ import java.util.List;
 @RequestMapping("item")
 public class ItemController {
 
-    @Autowired
-    private ItemRepository itemRepository;
+    private final ItemService itemService;
 
-    @PostMapping("/create")
-    public void create(@RequestBody Item item){itemRepository.save(item);}
+    public ItemController(ItemService itemService) {
 
-    @GetMapping("/read")
-    public List<Item> read(){ return itemRepository.findAll();}
+        this.itemService = itemService;
 
-    @DeleteMapping("delete/{id}")
-    public void delete(@PathVariable String id){itemRepository.deleteById(id);}
+    }
 
-    @PutMapping("/update")
-    public void update(@RequestBody Item item){itemRepository.save(item);}
+    @PostMapping
+    public void create(@RequestBody Item item){itemService.saveItem(item);}
+
+    @GetMapping
+    public List<Item> read(){ return itemService.getAllItems();}
+
+    @GetMapping("{id}")
+    public Item readById(@PathVariable String id){return itemService.getItemById(id);}
+
+    @DeleteMapping("{id}")
+    public void delete(@PathVariable String id){itemService.deleteItemById(id);}
+
+    @PutMapping
+    public void update(@RequestBody Item item){itemService.saveItem(item);}
 }
