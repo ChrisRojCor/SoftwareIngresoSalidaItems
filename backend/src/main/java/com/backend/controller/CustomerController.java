@@ -1,8 +1,7 @@
 package com.backend.controller;
 
-import com.backend.repository.CustomerRepository;
 import com.backend.model.entity.Customer;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.backend.service.CustomerService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,18 +10,26 @@ import java.util.List;
 @RequestMapping("customer")
 public class CustomerController {
 
-    @Autowired
-    private CustomerRepository customerRepository;
+    private final CustomerService customerService;
 
-    @PostMapping("/create")
-    public void create(@RequestBody Customer customer){customerRepository.save(customer);}
+    public CustomerController(CustomerService customerService){
 
-    @GetMapping("/read")
-    public List<Customer> read(){return customerRepository.findAll();}
+        this.customerService = customerService;
 
-    @DeleteMapping("delete/{id}")
-    public void delete(@PathVariable Integer id){customerRepository.deleteById(id);}
+    }
 
-    @PutMapping("/update")
-    public void update(@RequestBody Customer customer){customerRepository.save(customer);}
+    @PostMapping
+    public void create(@RequestBody Customer customer){customerService.saveCustomer(customer);}
+
+    @GetMapping
+    public List<Customer> read(){return customerService.getAllCustomers();}
+
+    @GetMapping("{id}")
+    public Customer readById(@PathVariable Integer id){return customerService.getCustomerById(id);}
+
+    @DeleteMapping("{id}")
+    public void delete(@PathVariable Integer id){customerService.deleteCustomerById(id);}
+
+    @PutMapping
+    public void update(@RequestBody Customer customer){customerService.saveCustomer(customer);}
 }
