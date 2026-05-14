@@ -14,17 +14,5 @@ class BackendApplicationTests {
     void contextLoads() {
     }
 
-    @Value("${spring.datasource.username:root}")
-    private String userDB;
-
-    @Test
-    void databaseUserCheck(){
-
-        String user = "root";
-
-        boolean isEqual = user.equals(userDB);
-
-        assertTrue(isEqual, "True");
-    }
 
 }

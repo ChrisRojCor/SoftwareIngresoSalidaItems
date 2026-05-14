@@ -2,7 +2,7 @@ package com.backend.model.entity;
 
 import jakarta.persistence.*;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 import com.backend.model.enums.ServiceType;
 import com.backend.model.enums.ServiceStatus;
@@ -14,7 +14,7 @@ public class OrderService {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int serviceNumber;
     @Temporal(TemporalType.DATE)
-    private Date date;
+    private LocalDate date = LocalDate.now();
     @Enumerated(EnumType.STRING)
     private ServiceType type;
     @Enumerated(EnumType.STRING)
@@ -30,11 +30,11 @@ public class OrderService {
         this.serviceNumber = serviceNumber;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 

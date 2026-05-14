@@ -1,7 +1,7 @@
 package com.backend.service;
 
 import com.backend.model.entity.OrderService;
-import com.backend.repository.orderServiceRepository;
+import com.backend.repository.OrderServiceRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,10 +9,10 @@ import java.util.List;
 @Service
 public class ServiceOrderService {
 
-    private final orderServiceRepository orderServiceRepository;
+    private final OrderServiceRepository orderServiceRepository;
 
 
-    public ServiceOrderService(orderServiceRepository orderServiceRepository) {
+    public ServiceOrderService(OrderServiceRepository orderServiceRepository) {
         this.orderServiceRepository = orderServiceRepository;
     }
 
