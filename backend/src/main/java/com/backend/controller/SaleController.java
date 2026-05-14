@@ -1,8 +1,7 @@
 package com.backend.controller;
 
-import com.backend.repository.SaleRepository;
 import com.backend.model.entity.Sale;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.backend.service.SaleService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,18 +10,34 @@ import java.util.List;
 @RequestMapping("sale")
 public class SaleController {
 
-    @Autowired
-    private SaleRepository saleRepository;
+    private final SaleService saleService;
 
-    @PostMapping("/create")
-    public void create(@RequestBody Sale sale){saleRepository.save(sale);}
+    public SaleController(SaleService saleService) {
+        this.saleService = saleService;
+    }
 
-    @GetMapping("/read")
-    public List<Sale> read(){return saleRepository.findAll();}
+    @PostMapping
+    public void create(@RequestBody Sale sale) {
+        saleService.saveSale(sale);
+    }
 
-    @DeleteMapping("delete/{id}")
-    public void delete(@PathVariable Integer id){saleRepository.deleteById(id);}
+    @GetMapping
+    public List<Sale> read() {
+        return saleService.getAllSales();
+    }
 
-    @PutMapping("/update")
-    public void update(@RequestBody Sale sale){saleRepository.save(sale);}
+    @GetMapping("{id}")
+    public Sale readById(@PathVariable Integer id) {
+        return saleService.getSaleById(id);
+    }
+
+    @DeleteMapping("{id}")
+    public void delete(@PathVariable Integer id) {
+        saleService.deleteSaleById(id);
+    }
+
+    @PutMapping
+    public void update(@RequestBody Sale sale) {
+        saleService.saveSale(sale);
+    }
 }
