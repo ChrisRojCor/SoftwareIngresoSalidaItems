@@ -1,8 +1,7 @@
 package com.backend.controller;
 
-import com.backend.repository.UserRepository;
 import com.backend.model.entity.User;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.backend.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,18 +10,34 @@ import java.util.List;
 @RequestMapping("user")
 public class UserController {
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserService userService;
 
-    @PostMapping("/create")
-    public void create(@RequestBody User user) { userRepository.save(user); }
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
-    @GetMapping("/read")
-    public List<User> read() { return userRepository.findAll(); }
+    @PostMapping
+    public void create(@RequestBody User user) {
+        userService.saveUser(user);
+    }
 
-    @DeleteMapping("delete/{id}")
-    public void delete(@PathVariable Integer id) { userRepository.deleteById(id); }
+    @GetMapping
+    public List<User> read() {
+        return userService.getAllUsers();
+    }
 
-    @PutMapping("/update")
-    public void update(@RequestBody User user) { userRepository.save(user); }
+    @GetMapping("{id}")
+    public User readById(@PathVariable Integer id) {
+        return userService.getUserById(id);
+    }
+
+    @DeleteMapping("{id}")
+    public void delete(@PathVariable Integer id) {
+        userService.deleteUserById(id);
+    }
+
+    @PutMapping
+    public void update(@RequestBody User user) {
+        userService.saveUser(user);
+    }
 }
