@@ -16,9 +16,9 @@ public class ServiceOrderService {
         this.orderServiceRepository = orderServiceRepository;
     }
 
-    public OrderService saveOrderService(OrderService orderService) {
+    public void saveOrderService(OrderService orderService) {
 
-        return orderServiceRepository.save(orderService);
+        orderServiceRepository.save(orderService);
     }
 
     public List<OrderService> getAllOrderServices() {
