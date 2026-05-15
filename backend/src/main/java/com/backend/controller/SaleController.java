@@ -1,7 +1,9 @@
 package com.backend.controller;
 
-import com.backend.model.entity.Sale;
+import com.backend.model.dto.SaleDTO;
+import com.backend.model.dto.SaleResponseDTO;
 import com.backend.service.SaleService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,17 +19,17 @@ public class SaleController {
     }
 
     @PostMapping
-    public void create(@RequestBody Sale sale) {
-        saleService.saveSale(sale);
+    public SaleResponseDTO create(@Valid @RequestBody SaleDTO saleDTO) {
+        return saleService.saveSale(saleDTO);
     }
 
     @GetMapping
-    public List<Sale> read() {
+    public List<SaleResponseDTO> read() {
         return saleService.getAllSales();
     }
 
     @GetMapping("{id}")
-    public Sale readById(@PathVariable Integer id) {
+    public SaleResponseDTO readById(@PathVariable Integer id) {
         return saleService.getSaleById(id);
     }
 
@@ -37,7 +39,7 @@ public class SaleController {
     }
 
     @PutMapping
-    public void update(@RequestBody Sale sale) {
-        saleService.saveSale(sale);
+    public SaleResponseDTO update(@Valid @RequestBody SaleDTO saleDTO) {
+        return saleService.saveSale(saleDTO);
     }
 }
