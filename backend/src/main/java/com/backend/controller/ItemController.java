@@ -1,35 +1,45 @@
 package com.backend.controller;
 
-import com.backend.model.entity.Item;
+import com.backend.model.dto.ItemDTO;
+import com.backend.model.dto.ItemResponseDTO;
 import com.backend.service.ItemService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("item")
+@RequestMapping("items")
 public class ItemController {
 
     private final ItemService itemService;
 
     public ItemController(ItemService itemService) {
-
         this.itemService = itemService;
-
     }
 
     @PostMapping
-    public void create(@RequestBody Item item){itemService.saveItem(item);}
+    public ItemResponseDTO create(@Valid @RequestBody ItemDTO itemDTO) {
+        return itemService.saveItem(itemDTO);
+    }
 
     @GetMapping
-    public List<Item> read(){ return itemService.getAllItems();}
+    public List<ItemResponseDTO> read() {
+        return itemService.getAllItems();
+    }
 
     @GetMapping("{id}")
-    public Item readById(@PathVariable String id){return itemService.getItemById(id);}
+    public ItemResponseDTO readById(@PathVariable String id) {
+        return itemService.getItemById(id);
+    }
 
     @DeleteMapping("{id}")
-    public void delete(@PathVariable String id){itemService.deleteItemById(id);}
+    public void delete(@PathVariable String id) {
+        itemService.deleteItemById(id);
+    }
 
     @PutMapping
-    public void update(@RequestBody Item item){itemService.saveItem(item);}
+    public ItemResponseDTO update(@Valid @RequestBody ItemDTO itemDTO) {
+        return itemService.saveItem(itemDTO);
+    }
 }
