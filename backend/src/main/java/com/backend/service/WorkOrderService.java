@@ -1,6 +1,8 @@
 package com.backend.service;
 
-import com.backend.model.entity.WorkOrder;
+import com.backend.mapper.WorkOrderMapper;
+import com.backend.model.dto.WorkOrderDTO;
+import com.backend.model.dto.WorkOrderResponseDTO;
 import com.backend.repository.WorkOrderRepository;
 import org.springframework.stereotype.Service;
 
@@ -10,21 +12,27 @@ import java.util.List;
 public class WorkOrderService {
 
     private final WorkOrderRepository workOrderRepository;
+    private final WorkOrderMapper workOrderMapper;
 
-    public WorkOrderService(WorkOrderRepository workOrderRepository) {
+    public WorkOrderService(WorkOrderRepository workOrderRepository, WorkOrderMapper workOrderMapper) {
         this.workOrderRepository = workOrderRepository;
+        this.workOrderMapper = workOrderMapper;
     }
 
-    public void saveWorkOrder(WorkOrder workOrder) {
-        workOrderRepository.save(workOrder);
+    public WorkOrderResponseDTO saveWorkOrder(WorkOrderDTO workOrderDTO) {
+        return workOrderMapper.toResponseDTO(
+                workOrderRepository.save(
+                        workOrderMapper.toEntity(workOrderDTO)));
     }
 
-    public List<WorkOrder> getAllWorkOrders() {
-        return workOrderRepository.findAll();
+    public List<WorkOrderResponseDTO> getAllWorkOrders() {
+        return workOrderMapper.toResponseDTOList(
+                workOrderRepository.findAll());
     }
 
-    public WorkOrder getWorkOrderById(int id) {
-        return workOrderRepository.findById(id).orElse(null);
+    public WorkOrderResponseDTO getWorkOrderById(int id) {
+        return workOrderMapper.toResponseDTO(
+                workOrderRepository.findById(id).orElse(null));
     }
 
     public void deleteWorkOrder(int id) {

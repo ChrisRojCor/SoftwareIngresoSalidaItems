@@ -1,7 +1,9 @@
 package com.backend.controller;
 
-import com.backend.model.entity.WorkOrder;
+import com.backend.model.dto.WorkOrderDTO;
+import com.backend.model.dto.WorkOrderResponseDTO;
 import com.backend.service.WorkOrderService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,17 +19,17 @@ public class WorkOrderController {
     }
 
     @PostMapping
-    public void create(@RequestBody WorkOrder workOrder) {
-        workOrderService.saveWorkOrder(workOrder);
+    public WorkOrderResponseDTO create(@Valid @RequestBody WorkOrderDTO workOrderDTO) {
+        return workOrderService.saveWorkOrder(workOrderDTO);
     }
 
     @GetMapping
-    public List<WorkOrder> read() {
+    public List<WorkOrderResponseDTO> read() {
         return workOrderService.getAllWorkOrders();
     }
 
     @GetMapping("/{id}")
-    public WorkOrder readById(@PathVariable int id) {
+    public WorkOrderResponseDTO readById(@PathVariable int id) {
         return workOrderService.getWorkOrderById(id);
     }
 
@@ -37,7 +39,7 @@ public class WorkOrderController {
     }
 
     @PutMapping
-    public void update(@RequestBody WorkOrder workOrder) {
-        workOrderService.saveWorkOrder(workOrder);
+    public WorkOrderResponseDTO update(@Valid @RequestBody WorkOrderDTO workOrderDTO) {
+        return workOrderService.saveWorkOrder(workOrderDTO);
     }
 }
