@@ -1,11 +1,6 @@
 package com.backend.model.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import com.backend.model.enums.UserRole;
 
@@ -16,6 +11,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
+    @Column(unique = true)
     private String email;
     private String password;
     @Enumerated(EnumType.STRING)
