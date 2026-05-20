@@ -1,6 +1,7 @@
 package com.backend.controller;
 
 import com.backend.model.dto.LoginRequest;
+import com.backend.security.jwt.JwtService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 public class AuthController {
 
     private final AuthenticationManager authenticationManager;
+    private final JwtService jwtService;
 
     @PostMapping("/login")
     public String login(@RequestBody LoginRequest request) {
@@ -24,6 +26,9 @@ public class AuthController {
                 )
         );
 
-        return "User authenticated";
+        String token = jwtService.generateToken(request.getEmail());
+
+
+        return token;
     }
 }
