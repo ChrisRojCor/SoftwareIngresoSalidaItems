@@ -3,7 +3,7 @@ package com.backend.security.dto;
 import lombok.Data;
 
 @Data
-public class LoginRequestDTO {
+public class LoginRequestDto {
 
     private String email;
 

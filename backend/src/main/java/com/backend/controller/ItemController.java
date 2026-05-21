@@ -1,7 +1,7 @@
 package com.backend.controller;
 
-import com.backend.model.dto.ItemDTO;
-import com.backend.model.dto.ItemResponseDTO;
+import com.backend.model.dto.ItemRequestDto;
+import com.backend.model.dto.ItemResponseDto;
 import com.backend.service.ItemService;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
@@ -19,17 +19,17 @@ public class ItemController {
     }
 
     @PostMapping
-    public ItemResponseDTO create(@Valid @RequestBody ItemDTO itemDTO) {
-        return itemService.saveItem(itemDTO);
+    public ItemResponseDto create(@Valid @RequestBody ItemRequestDto itemRequestDto) {
+        return itemService.saveItem(itemRequestDto);
     }
 
     @GetMapping
-    public List<ItemResponseDTO> read() {
+    public List<ItemResponseDto> read() {
         return itemService.getAllItems();
     }
 
     @GetMapping("{id}")
-    public ItemResponseDTO readById(@PathVariable String id) {
+    public ItemResponseDto readById(@PathVariable String id) {
         return itemService.getItemById(id);
     }
 
@@ -39,7 +39,7 @@ public class ItemController {
     }
 
     @PutMapping
-    public ItemResponseDTO update(@Valid @RequestBody ItemDTO itemDTO) {
-        return itemService.saveItem(itemDTO);
+    public ItemResponseDto update(@Valid @RequestBody ItemRequestDto itemRequestDto) {
+        return itemService.saveItem(itemRequestDto);
     }
 }

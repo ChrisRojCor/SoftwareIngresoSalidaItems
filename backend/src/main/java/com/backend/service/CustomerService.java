@@ -1,7 +1,7 @@
 package com.backend.service;
 
-import com.backend.model.dto.CustomerDTO;
-import com.backend.model.dto.CustomerResponseDTO;
+import com.backend.model.dto.CustomerRequestDto;
+import com.backend.model.dto.CustomerResponseDto;
 import com.backend.mapper.CustomerMapper;
 import com.backend.repository.CustomerRepository;
 import org.springframework.stereotype.Service;
@@ -19,17 +19,17 @@ public class CustomerService {
         this.customerMapper = customerMapper;
     }
 
-    public CustomerResponseDTO saveCustomer(CustomerDTO customerDTO) {
+    public CustomerResponseDto saveCustomer(CustomerRequestDto customerRequestDto) {
         return customerMapper.toResponseDTO(
-                customerRepository.save(customerMapper.toEntity(customerDTO)));
+                customerRepository.save(customerMapper.toEntity(customerRequestDto)));
     }
 
-    public List<CustomerResponseDTO> getAllCustomers() {
+    public List<CustomerResponseDto> getAllCustomers() {
         return customerMapper.toResponseDTOList(
                 customerRepository.findAll());
     }
 
-    public CustomerResponseDTO getCustomerById(int id) {
+    public CustomerResponseDto getCustomerById(int id) {
         return customerMapper.toResponseDTO(
                 customerRepository.findById(id).orElse(null));
     }

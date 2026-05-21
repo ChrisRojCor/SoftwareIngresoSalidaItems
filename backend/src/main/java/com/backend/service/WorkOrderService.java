@@ -1,8 +1,8 @@
 package com.backend.service;
 
 import com.backend.mapper.WorkOrderMapper;
-import com.backend.model.dto.WorkOrderDTO;
-import com.backend.model.dto.WorkOrderResponseDTO;
+import com.backend.model.dto.WorkOrderRequestDto;
+import com.backend.model.dto.WorkOrderResponseDto;
 import com.backend.repository.WorkOrderRepository;
 import org.springframework.stereotype.Service;
 
@@ -19,18 +19,18 @@ public class WorkOrderService {
         this.workOrderMapper = workOrderMapper;
     }
 
-    public WorkOrderResponseDTO saveWorkOrder(WorkOrderDTO workOrderDTO) {
+    public WorkOrderResponseDto saveWorkOrder(WorkOrderRequestDto workOrderRequestDto) {
         return workOrderMapper.toResponseDTO(
                 workOrderRepository.save(
-                        workOrderMapper.toEntity(workOrderDTO)));
+                        workOrderMapper.toEntity(workOrderRequestDto)));
     }
 
-    public List<WorkOrderResponseDTO> getAllWorkOrders() {
+    public List<WorkOrderResponseDto> getAllWorkOrders() {
         return workOrderMapper.toResponseDTOList(
                 workOrderRepository.findAll());
     }
 
-    public WorkOrderResponseDTO getWorkOrderById(int id) {
+    public WorkOrderResponseDto getWorkOrderById(int id) {
         return workOrderMapper.toResponseDTO(
                 workOrderRepository.findById(id).orElse(null));
     }

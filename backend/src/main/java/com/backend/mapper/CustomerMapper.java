@@ -1,7 +1,7 @@
 package com.backend.mapper;
 
-import com.backend.model.dto.CustomerDTO;
-import com.backend.model.dto.CustomerResponseDTO;
+import com.backend.model.dto.CustomerRequestDto;
+import com.backend.model.dto.CustomerResponseDto;
 import com.backend.model.entity.Customer;
 import org.springframework.stereotype.Component;
 
@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 @Component
 public class CustomerMapper {
 
-    public Customer toEntity(CustomerDTO dto) {
+    public Customer toEntity(CustomerRequestDto dto) {
         Customer customer = new Customer();
         customer.setId(dto.getId());
         customer.setCustomerName(dto.getCustomerName());
@@ -23,8 +23,8 @@ public class CustomerMapper {
         return customer;
     }
 
-    public CustomerResponseDTO toResponseDTO(Customer customer) {
-        CustomerResponseDTO dto = new CustomerResponseDTO();
+    public CustomerResponseDto toResponseDTO(Customer customer) {
+        CustomerResponseDto dto = new CustomerResponseDto();
         dto.setId(customer.getId());
         dto.setCustomerName(customer.getCustomerName());
         dto.setBusinessName(customer.getBusinessName());
@@ -35,7 +35,7 @@ public class CustomerMapper {
         return dto;
     }
 
-    public List<CustomerResponseDTO> toResponseDTOList(List<Customer> customers) {
+    public List<CustomerResponseDto> toResponseDTOList(List<Customer> customers) {
         return customers.stream()
                 .map(this::toResponseDTO)
                 .collect(Collectors.toList());

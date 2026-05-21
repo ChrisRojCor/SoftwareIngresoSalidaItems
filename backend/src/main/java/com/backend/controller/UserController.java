@@ -1,7 +1,7 @@
 package com.backend.controller;
 
-import com.backend.model.dto.UserDTO;
-import com.backend.model.dto.UserResponseDTO;
+import com.backend.model.dto.UserRequestDto;
+import com.backend.model.dto.UserResponseDto;
 import com.backend.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
@@ -19,17 +19,17 @@ public class UserController {
     }
 
     @PostMapping
-    public UserResponseDTO create(@Valid @RequestBody UserDTO userDTO) {
-        return userService.saveUser(userDTO);
+    public UserResponseDto create(@Valid @RequestBody UserRequestDto userRequestDto) {
+        return userService.saveUser(userRequestDto);
     }
 
     @GetMapping
-    public List<UserResponseDTO> read() {
+    public List<UserResponseDto> read() {
         return userService.getAllUsers();
     }
 
     @GetMapping("{id}")
-    public UserResponseDTO readById(@PathVariable Integer id) {
+    public UserResponseDto readById(@PathVariable Integer id) {
         return userService.getUserById(id);
     }
 
@@ -39,7 +39,7 @@ public class UserController {
     }
 
     @PutMapping
-    public UserResponseDTO update(@Valid @RequestBody UserDTO userDTO) {
-        return userService.saveUser(userDTO);
+    public UserResponseDto update(@Valid @RequestBody UserRequestDto userRequestDto) {
+        return userService.saveUser(userRequestDto);
     }
 }

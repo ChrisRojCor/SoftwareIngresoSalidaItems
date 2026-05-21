@@ -2,7 +2,7 @@ package com.backend.model.dto;
 
 import com.backend.model.enums.UserRole;
 
-public class UserResponseDTO {
+public class UserResponseDto {
 
     private int id;
     private String name;

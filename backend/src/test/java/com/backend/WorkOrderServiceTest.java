@@ -1,6 +1,6 @@
 package com.backend;
 
-import com.backend.model.dto.WorkOrderResponseDTO;
+import com.backend.model.dto.WorkOrderResponseDto;
 import com.backend.model.entity.WorkOrder;
 import com.backend.repository.WorkOrderRepository;
 import com.backend.service.WorkOrderService;
@@ -34,7 +34,7 @@ public class WorkOrderServiceTest {
 
         Mockito.when(workOrderRepository.findById(1)).thenReturn(Optional.of(workOrder));
 
-        WorkOrderResponseDTO result = workOrderService.getWorkOrderById(1);
+        WorkOrderResponseDto result = workOrderService.getWorkOrderById(1);
 
         assertNotNull(result);
         assertEquals(1, result.getServiceNumber());

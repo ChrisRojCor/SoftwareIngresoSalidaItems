@@ -1,7 +1,7 @@
 package com.backend.controller;
 
-import com.backend.model.dto.CustomerDTO;
-import com.backend.model.dto.CustomerResponseDTO;
+import com.backend.model.dto.CustomerRequestDto;
+import com.backend.model.dto.CustomerResponseDto;
 import com.backend.service.CustomerService;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
@@ -19,17 +19,17 @@ public class CustomerController {
     }
 
     @PostMapping
-    public CustomerResponseDTO create(@Valid @RequestBody CustomerDTO customerDTO) {
-        return customerService.saveCustomer(customerDTO);
+    public CustomerResponseDto create(@Valid @RequestBody CustomerRequestDto customerRequestDto) {
+        return customerService.saveCustomer(customerRequestDto);
     }
 
     @GetMapping
-    public List<CustomerResponseDTO> read() {
+    public List<CustomerResponseDto> read() {
         return customerService.getAllCustomers();
     }
 
     @GetMapping("{id}")
-    public CustomerResponseDTO readById(@PathVariable Integer id) {
+    public CustomerResponseDto readById(@PathVariable Integer id) {
         return customerService.getCustomerById(id);
     }
 
@@ -39,7 +39,7 @@ public class CustomerController {
     }
 
     @PutMapping
-    public CustomerResponseDTO update(@Valid @RequestBody CustomerDTO customerDTO) {
-        return customerService.saveCustomer(customerDTO);
+    public CustomerResponseDto update(@Valid @RequestBody CustomerRequestDto customerRequestDto) {
+        return customerService.saveCustomer(customerRequestDto);
     }
 }

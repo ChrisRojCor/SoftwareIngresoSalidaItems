@@ -1,7 +1,7 @@
 package com.backend.mapper;
 
-import com.backend.model.dto.WorkOrderDTO;
-import com.backend.model.dto.WorkOrderResponseDTO;
+import com.backend.model.dto.WorkOrderRequestDto;
+import com.backend.model.dto.WorkOrderResponseDto;
 import com.backend.model.entity.WorkOrder;
 import org.springframework.stereotype.Component;
 
@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 @Component
 public class WorkOrderMapper {
 
-    public WorkOrder toEntity(WorkOrderDTO dto) {
+    public WorkOrder toEntity(WorkOrderRequestDto dto) {
         WorkOrder workOrder = new WorkOrder();
         workOrder.setType(dto.getType());
         workOrder.setStatus(dto.getStatus());
@@ -19,8 +19,8 @@ public class WorkOrderMapper {
         return workOrder;
     }
 
-    public WorkOrderResponseDTO toResponseDTO(WorkOrder workOrder) {
-        WorkOrderResponseDTO dto = new WorkOrderResponseDTO();
+    public WorkOrderResponseDto toResponseDTO(WorkOrder workOrder) {
+        WorkOrderResponseDto dto = new WorkOrderResponseDto();
         dto.setServiceNumber(workOrder.getServiceNumber());
         dto.setDate(workOrder.getDate());
         dto.setType(workOrder.getType());
@@ -29,7 +29,7 @@ public class WorkOrderMapper {
         return dto;
     }
 
-    public List<WorkOrderResponseDTO> toResponseDTOList(List<WorkOrder> workOrders) {
+    public List<WorkOrderResponseDto> toResponseDTOList(List<WorkOrder> workOrders) {
         return workOrders.stream()
                 .map(this::toResponseDTO)
                 .collect(Collectors.toList());

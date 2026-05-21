@@ -6,7 +6,7 @@ import jakarta.validation.constraints.PositiveOrZero;
 
 import java.math.BigDecimal;
 
-public class SaleDTO {
+public class SaleRequestDto {
 
     @NotNull
     @Positive

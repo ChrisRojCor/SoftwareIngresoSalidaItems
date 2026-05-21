@@ -1,7 +1,7 @@
 package com.backend.controller;
 
-import com.backend.model.dto.WorkOrderDTO;
-import com.backend.model.dto.WorkOrderResponseDTO;
+import com.backend.model.dto.WorkOrderRequestDto;
+import com.backend.model.dto.WorkOrderResponseDto;
 import com.backend.service.WorkOrderService;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
@@ -19,17 +19,17 @@ public class WorkOrderController {
     }
 
     @PostMapping
-    public WorkOrderResponseDTO create(@Valid @RequestBody WorkOrderDTO workOrderDTO) {
-        return workOrderService.saveWorkOrder(workOrderDTO);
+    public WorkOrderResponseDto create(@Valid @RequestBody WorkOrderRequestDto workOrderRequestDto) {
+        return workOrderService.saveWorkOrder(workOrderRequestDto);
     }
 
     @GetMapping
-    public List<WorkOrderResponseDTO> read() {
+    public List<WorkOrderResponseDto> read() {
         return workOrderService.getAllWorkOrders();
     }
 
     @GetMapping("/{id}")
-    public WorkOrderResponseDTO readById(@PathVariable int id) {
+    public WorkOrderResponseDto readById(@PathVariable int id) {
         return workOrderService.getWorkOrderById(id);
     }
 
@@ -39,7 +39,7 @@ public class WorkOrderController {
     }
 
     @PutMapping
-    public WorkOrderResponseDTO update(@Valid @RequestBody WorkOrderDTO workOrderDTO) {
-        return workOrderService.saveWorkOrder(workOrderDTO);
+    public WorkOrderResponseDto update(@Valid @RequestBody WorkOrderRequestDto workOrderRequestDto) {
+        return workOrderService.saveWorkOrder(workOrderRequestDto);
     }
 }

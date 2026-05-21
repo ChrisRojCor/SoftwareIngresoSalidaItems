@@ -1,8 +1,8 @@
 package com.backend.service;
 
 import com.backend.mapper.UserMapper;
-import com.backend.model.dto.UserDTO;
-import com.backend.model.dto.UserResponseDTO;
+import com.backend.model.dto.UserRequestDto;
+import com.backend.model.dto.UserResponseDto;
 import com.backend.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
@@ -19,18 +19,18 @@ public class UserService {
         this.userMapper = userMapper;
     }
 
-    public UserResponseDTO saveUser(UserDTO userDTO) {
+    public UserResponseDto saveUser(UserRequestDto userRequestDto) {
         return userMapper.toResponseDTO(
                 userRepository.save(
-                        userMapper.toEntity(userDTO)));
+                        userMapper.toEntity(userRequestDto)));
     }
 
-    public List<UserResponseDTO> getAllUsers() {
+    public List<UserResponseDto> getAllUsers() {
         return userMapper.toResponseDTOList(
                 userRepository.findAll());
     }
 
-    public UserResponseDTO getUserById(int id) {
+    public UserResponseDto getUserById(int id) {
         return userMapper.toResponseDTO(
                 userRepository.findById(id).orElse(null));
     }

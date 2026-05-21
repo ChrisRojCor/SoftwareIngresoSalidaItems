@@ -1,7 +1,7 @@
 package com.backend.controller;
 
-import com.backend.model.dto.SaleDTO;
-import com.backend.model.dto.SaleResponseDTO;
+import com.backend.model.dto.SaleRequestDto;
+import com.backend.model.dto.SaleResponseDto;
 import com.backend.service.SaleService;
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
@@ -19,17 +19,17 @@ public class SaleController {
     }
 
     @PostMapping
-    public SaleResponseDTO create(@Valid @RequestBody SaleDTO saleDTO) {
-        return saleService.saveSale(saleDTO);
+    public SaleResponseDto create(@Valid @RequestBody SaleRequestDto saleRequestDto) {
+        return saleService.saveSale(saleRequestDto);
     }
 
     @GetMapping
-    public List<SaleResponseDTO> read() {
+    public List<SaleResponseDto> read() {
         return saleService.getAllSales();
     }
 
     @GetMapping("{id}")
-    public SaleResponseDTO readById(@PathVariable Integer id) {
+    public SaleResponseDto readById(@PathVariable Integer id) {
         return saleService.getSaleById(id);
     }
 
@@ -39,7 +39,7 @@ public class SaleController {
     }
 
     @PutMapping
-    public SaleResponseDTO update(@Valid @RequestBody SaleDTO saleDTO) {
-        return saleService.saveSale(saleDTO);
+    public SaleResponseDto update(@Valid @RequestBody SaleRequestDto saleRequestDto) {
+        return saleService.saveSale(saleRequestDto);
     }
 }

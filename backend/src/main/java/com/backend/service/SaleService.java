@@ -1,8 +1,8 @@
 package com.backend.service;
 
 import com.backend.mapper.SaleMapper;
-import com.backend.model.dto.SaleDTO;
-import com.backend.model.dto.SaleResponseDTO;
+import com.backend.model.dto.SaleRequestDto;
+import com.backend.model.dto.SaleResponseDto;
 import com.backend.repository.SaleRepository;
 import org.springframework.stereotype.Service;
 
@@ -19,18 +19,18 @@ public class SaleService {
         this.saleMapper = saleMapper;
     }
 
-    public SaleResponseDTO saveSale(SaleDTO saleDTO) {
+    public SaleResponseDto saveSale(SaleRequestDto saleRequestDto) {
         return saleMapper.toResponseDTO(
                 saleRepository.save(
-                        saleMapper.toEntity(saleDTO)));
+                        saleMapper.toEntity(saleRequestDto)));
     }
 
-    public List<SaleResponseDTO> getAllSales() {
+    public List<SaleResponseDto> getAllSales() {
         return saleMapper.toResponseDTOList(
                 saleRepository.findAll());
     }
 
-    public SaleResponseDTO getSaleById(int id) {
+    public SaleResponseDto getSaleById(int id) {
         return saleMapper.toResponseDTO(
                 saleRepository.findById(id).orElse(null));
     }

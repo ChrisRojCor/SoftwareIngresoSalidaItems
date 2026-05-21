@@ -1,7 +1,7 @@
 package com.backend.service;
 
-import com.backend.model.dto.ItemDTO;
-import com.backend.model.dto.ItemResponseDTO;
+import com.backend.model.dto.ItemRequestDto;
+import com.backend.model.dto.ItemResponseDto;
 import com.backend.mapper.ItemMapper;
 import com.backend.repository.ItemRepository;
 import org.springframework.stereotype.Service;
@@ -19,18 +19,18 @@ public class ItemService {
         this.itemMapper = itemMapper;
     }
 
-    public ItemResponseDTO saveItem(ItemDTO itemDTO) {
+    public ItemResponseDto saveItem(ItemRequestDto itemRequestDto) {
         return itemMapper.toResponseDTO(
                 itemRepository.save(
-                        itemMapper.toEntity(itemDTO)));
+                        itemMapper.toEntity(itemRequestDto)));
     }
 
-    public List<ItemResponseDTO> getAllItems() {
+    public List<ItemResponseDto> getAllItems() {
         return itemMapper.toResponseDTOList(
                 itemRepository.findAll());
     }
 
-    public ItemResponseDTO getItemById(String id) {
+    public ItemResponseDto getItemById(String id) {
         return itemMapper.toResponseDTO(
                 itemRepository.findById(id).orElse(null));
     }

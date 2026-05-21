@@ -5,7 +5,7 @@ import com.backend.model.enums.ServiceType;
 
 import java.time.LocalDate;
 
-public class WorkOrderResponseDTO {
+public class WorkOrderResponseDto {
 
     private int serviceNumber;
     private LocalDate date;

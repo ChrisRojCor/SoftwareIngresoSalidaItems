@@ -1,7 +1,7 @@
 package com.backend.mapper;
 
-import com.backend.model.dto.UserDTO;
-import com.backend.model.dto.UserResponseDTO;
+import com.backend.model.dto.UserRequestDto;
+import com.backend.model.dto.UserResponseDto;
 import com.backend.model.entity.User;
 import org.springframework.stereotype.Component;
 
@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 @Component
 public class UserMapper {
 
-    public User toEntity(UserDTO dto) {
+    public User toEntity(UserRequestDto dto) {
         User user = new User();
         user.setName(dto.getName());
         user.setEmail(dto.getEmail());
@@ -21,8 +21,8 @@ public class UserMapper {
         return user;
     }
 
-    public UserResponseDTO toResponseDTO(User user) {
-        UserResponseDTO dto = new UserResponseDTO();
+    public UserResponseDto toResponseDTO(User user) {
+        UserResponseDto dto = new UserResponseDto();
         dto.setId(user.getId());
         dto.setName(user.getName());
         dto.setEmail(user.getEmail());
@@ -31,7 +31,7 @@ public class UserMapper {
         return dto;
     }
 
-    public List<UserResponseDTO> toResponseDTOList(List<User> users) {
+    public List<UserResponseDto> toResponseDTOList(List<User> users) {
         return users.stream()
                 .map(this::toResponseDTO)
                 .collect(Collectors.toList());

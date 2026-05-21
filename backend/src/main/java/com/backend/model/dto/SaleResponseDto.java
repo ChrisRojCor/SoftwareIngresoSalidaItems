@@ -3,7 +3,7 @@ package com.backend.model.dto;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public class SaleResponseDTO {
+public class SaleResponseDto {
 
     private int saleNumber;
     private BigDecimal amount;

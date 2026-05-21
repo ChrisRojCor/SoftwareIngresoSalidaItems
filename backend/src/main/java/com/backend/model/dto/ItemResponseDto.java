@@ -1,22 +1,10 @@
 package com.backend.model.dto;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
+public class ItemResponseDto {
 
-public class ItemDTO {
-
-    @NotBlank
     private String id;
-
-    @NotBlank
-    @Size(max = 100)
     private String name;
-
-    @Size(max = 100)
     private String model;
-
-    @NotBlank
-    @Size(max = 100)
     private String brand;
 
     public String getId() {

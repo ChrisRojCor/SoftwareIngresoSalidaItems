@@ -5,7 +5,7 @@ import com.backend.model.enums.ServiceType;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
-public class WorkOrderDTO {
+public class WorkOrderRequestDto {
 
     @NotNull
     private ServiceType type;
