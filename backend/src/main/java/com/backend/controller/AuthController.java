@@ -1,6 +1,6 @@
 package com.backend.controller;
 
-import com.backend.model.dto.LoginRequest;
+import com.backend.model.dto.LoginRequestDTO;
 import com.backend.security.jwt.JwtService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -17,7 +17,7 @@ public class AuthController {
     private final JwtService jwtService;
 
     @PostMapping("/login")
-    public String login(@RequestBody LoginRequest request) {
+    public String login(@RequestBody LoginRequestDTO request) {
 
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
