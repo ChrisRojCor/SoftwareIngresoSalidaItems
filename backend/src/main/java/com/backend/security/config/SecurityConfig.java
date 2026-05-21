@@ -1,6 +1,8 @@
 package com.backend.security.config;
 
 import com.backend.security.filter.JwtAuthenticationFilter;
+import com.backend.security.handler.CustomAccessDeniedHandler;
+import com.backend.security.handler.JwtAuthenticationEntryPoint;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,12 +20,16 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfig {
 
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
+    private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
+    private final CustomAccessDeniedHandler customAccessDeniedHandler;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
 
         http.csrf(csrf -> csrf.disable())
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+            .exceptionHandling(ex -> ex.authenticationEntryPoint(jwtAuthenticationEntryPoint))
+                .exceptionHandling(ex -> ex.accessDeniedHandler(customAccessDeniedHandler))
             .authorizeHttpRequests(auth -> auth
             .requestMatchers("/auth/**").permitAll()
                 .requestMatchers("/admin/**").hasRole("ADMIN")
