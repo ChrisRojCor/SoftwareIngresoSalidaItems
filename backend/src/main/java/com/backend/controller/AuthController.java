@@ -1,6 +1,6 @@
 package com.backend.controller;
 
-import com.backend.model.dto.LoginRequestDTO;
+import com.backend.security.dto.LoginRequestDTO;
 import com.backend.security.jwt.JwtService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
