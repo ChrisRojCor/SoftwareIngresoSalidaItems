@@ -38,8 +38,8 @@ public class WorkOrderController {
         workOrderService.deleteWorkOrder(id);
     }
 
-    @PutMapping
-    public WorkOrderResponseDto update(@Valid @RequestBody WorkOrderRequestDto workOrderRequestDto) {
-        return workOrderService.saveWorkOrder(workOrderRequestDto);
+    @PutMapping("/{id}")
+    public WorkOrderResponseDto update(@PathVariable int id, @Valid @RequestBody WorkOrderRequestDto workOrderRequestDto) {
+        return workOrderService.updateWorkOrder(id, workOrderRequestDto);
     }
 }

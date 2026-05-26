@@ -31,6 +31,14 @@ public class UserMapper {
         return dto;
     }
 
+    public void merge(User existing, UserRequestDto dto) {
+        existing.setName(dto.getName());
+        existing.setEmail(dto.getEmail());
+        existing.setPassword(dto.getPassword());
+        existing.setRole(dto.getRole());
+        existing.setActive(dto.getActive());
+    }
+
     public List<UserResponseDto> toResponseDTOList(List<User> users) {
         return users.stream()
                 .map(this::toResponseDTO)

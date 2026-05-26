@@ -29,6 +29,12 @@ public class ItemMapper {
         return dto;
     }
 
+    public void merge(Item existing, ItemRequestDto dto) {
+        existing.setName(dto.getName());
+        existing.setModel(dto.getModel());
+        existing.setBrand(dto.getBrand());
+    }
+
     public List<ItemResponseDto> toResponseDTOList(List<Item> items) {
         return items.stream()
                 .map(this::toResponseDTO)

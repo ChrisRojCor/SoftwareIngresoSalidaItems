@@ -38,8 +38,8 @@ public class CustomerController {
         customerService.deleteCustomerById(id);
     }
 
-    @PutMapping
-    public CustomerResponseDto update(@Valid @RequestBody CustomerRequestDto customerRequestDto) {
-        return customerService.saveCustomer(customerRequestDto);
+    @PutMapping("/{id}")
+    public CustomerResponseDto update(@PathVariable Integer id, @Valid @RequestBody CustomerRequestDto customerRequestDto) {
+        return customerService.updateCustomer(id, customerRequestDto);
     }
 }

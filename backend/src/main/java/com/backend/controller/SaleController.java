@@ -38,8 +38,8 @@ public class SaleController {
         saleService.deleteSaleById(id);
     }
 
-    @PutMapping
-    public SaleResponseDto update(@Valid @RequestBody SaleRequestDto saleRequestDto) {
-        return saleService.saveSale(saleRequestDto);
+    @PutMapping("/{id}")
+    public SaleResponseDto update(@PathVariable int id, @Valid @RequestBody SaleRequestDto saleRequestDto) {
+        return saleService.updateSale(id, saleRequestDto);
     }
 }

@@ -29,6 +29,12 @@ public class WorkOrderMapper {
         return dto;
     }
 
+    public void merge(WorkOrder existing, WorkOrderRequestDto dto) {
+        existing.setType(dto.getType());
+        existing.setStatus(dto.getStatus());
+        existing.setDiagnosis(dto.getDiagnosis());
+    }
+
     public List<WorkOrderResponseDto> toResponseDTOList(List<WorkOrder> workOrders) {
         return workOrders.stream()
                 .map(this::toResponseDTO)

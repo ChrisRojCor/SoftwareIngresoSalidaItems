@@ -35,6 +35,15 @@ public class CustomerMapper {
         return dto;
     }
 
+    public void merge(Customer existing, CustomerRequestDto dto) {
+        existing.setCustomerName(dto.getCustomerName());
+        existing.setBusinessName(dto.getBusinessName());
+        existing.setPhone(dto.getPhone());
+        existing.setContactEmail(dto.getContactEmail());
+        existing.setAddress(dto.getAddress());
+        existing.setCity(dto.getCity());
+    }
+
     public List<CustomerResponseDto> toResponseDTOList(List<Customer> customers) {
         return customers.stream()
                 .map(this::toResponseDTO)

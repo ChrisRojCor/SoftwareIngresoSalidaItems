@@ -38,8 +38,8 @@ public class UserController {
         userService.deleteUserById(id);
     }
 
-    @PutMapping
-    public UserResponseDto update(@Valid @RequestBody UserRequestDto userRequestDto) {
-        return userService.saveUser(userRequestDto);
+    @PutMapping("/{id}")
+    public UserResponseDto update(@PathVariable int id, @Valid @RequestBody UserRequestDto userRequestDto) {
+        return userService.updateUser(id, userRequestDto);
     }
 }

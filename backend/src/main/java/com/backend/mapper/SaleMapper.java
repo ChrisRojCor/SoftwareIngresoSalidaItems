@@ -27,6 +27,11 @@ public class SaleMapper {
         return dto;
     }
 
+    public void merge(Sale existing, SaleRequestDto dto) {
+        existing.setAmount(dto.getAmount());
+        existing.setDiscount(dto.getDiscount());
+    }
+
     public List<SaleResponseDto> toResponseDTOList(List<Sale> sales) {
         return sales.stream()
                 .map(this::toResponseDTO)

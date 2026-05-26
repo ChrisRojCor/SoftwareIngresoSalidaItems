@@ -5,6 +5,7 @@ import com.backend.model.dto.UserRequestDto;
 import com.backend.model.dto.UserResponseDto;
 import com.backend.model.entity.User;
 import com.backend.repository.UserRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -39,6 +40,14 @@ public class UserService {
     public UserResponseDto getUserById(int id) {
         return userMapper.toResponseDTO(
                 userRepository.findById(id).orElse(null));
+    }
+
+    public UserResponseDto updateUser(int id, UserRequestDto dto) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("User not found: " + id));
+        userMapper.merge(user, dto);
+        user.setPassword(passwordEncoder.encode(dto.getPassword()));
+        return userMapper.toResponseDTO(userRepository.save(user));
     }
 
     public void deleteUserById(int id) {

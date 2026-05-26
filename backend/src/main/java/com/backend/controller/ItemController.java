@@ -40,6 +40,6 @@ public class ItemController {
 
     @PutMapping
     public ItemResponseDto update(@Valid @RequestBody ItemRequestDto itemRequestDto) {
-        return itemService.saveItem(itemRequestDto);
+        return itemService.updateItem(itemRequestDto);
     }
 }
