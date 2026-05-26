@@ -5,10 +5,12 @@ import com.backend.model.dto.WorkOrderRequestDto;
 import com.backend.model.dto.WorkOrderResponseDto;
 import com.backend.repository.WorkOrderRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@Transactional
 public class WorkOrderService {
 
     private final WorkOrderRepository workOrderRepository;

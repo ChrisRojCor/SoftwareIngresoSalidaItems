@@ -5,10 +5,12 @@ import com.backend.model.dto.CustomerResponseDto;
 import com.backend.mapper.CustomerMapper;
 import com.backend.repository.CustomerRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@Transactional
 public class CustomerService {
 
     private final CustomerRepository customerRepository;

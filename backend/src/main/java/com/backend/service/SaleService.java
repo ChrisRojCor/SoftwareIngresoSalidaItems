@@ -5,10 +5,12 @@ import com.backend.model.dto.SaleRequestDto;
 import com.backend.model.dto.SaleResponseDto;
 import com.backend.repository.SaleRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@Transactional
 public class SaleService {
 
     private final SaleRepository saleRepository;
