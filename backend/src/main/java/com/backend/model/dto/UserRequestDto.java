@@ -16,14 +16,15 @@ public class UserRequestDto {
 
     @NotBlank
     @Email
+    @Size(max = 150)
     private String email;
 
     @NotBlank
-    @Size(min = 6, max = 100)
+    @Size(min = 6, max = 255)
     private String password;
 
     @NotNull
     private UserRole role;
 
-    private Boolean active;
+    private boolean isActive;
 }

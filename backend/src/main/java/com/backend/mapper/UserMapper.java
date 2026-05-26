@@ -17,7 +17,7 @@ public class UserMapper {
         user.setEmail(dto.getEmail());
         user.setPassword(dto.getPassword());
         user.setRole(dto.getRole());
-        user.setActive(dto.getActive());
+        user.setActive(dto.isActive());
         return user;
     }
 
@@ -27,7 +27,8 @@ public class UserMapper {
         dto.setName(user.getName());
         dto.setEmail(user.getEmail());
         dto.setRole(user.getRole());
-        dto.setActive(user.getActive());
+        dto.setActive(user.isActive());
+        dto.setCreatedAt(user.getCreatedAt());
         return dto;
     }
 
@@ -36,7 +37,7 @@ public class UserMapper {
         existing.setEmail(dto.getEmail());
         existing.setPassword(dto.getPassword());
         existing.setRole(dto.getRole());
-        existing.setActive(dto.getActive());
+        existing.setActive(dto.isActive());
     }
 
     public List<UserResponseDto> toResponseDTOList(List<User> users) {

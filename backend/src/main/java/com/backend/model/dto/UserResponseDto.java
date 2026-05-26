@@ -3,6 +3,8 @@ package com.backend.model.dto;
 import com.backend.model.enums.UserRole;
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 @Data
 public class UserResponseDto {
 
@@ -10,5 +12,6 @@ public class UserResponseDto {
     private String name;
     private String email;
     private UserRole role;
-    private Boolean active;
+    private boolean isActive;
+    private LocalDateTime createdAt;
 }
