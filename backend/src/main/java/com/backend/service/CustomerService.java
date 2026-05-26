@@ -23,7 +23,7 @@ public class CustomerService {
         this.customerMapper = customerMapper;
     }
 
-    public CustomerResponseDto saveCustomer(CustomerRequestDto customerRequestDto) {
+    public CustomerResponseDto createCustomer(CustomerRequestDto customerRequestDto) {
         return customerMapper.toResponseDTO(
                 customerRepository.save(customerMapper.toEntity(customerRequestDto)));
     }

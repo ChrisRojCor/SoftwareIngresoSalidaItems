@@ -23,7 +23,7 @@ public class SaleService {
         this.saleMapper = saleMapper;
     }
 
-    public SaleResponseDto saveSale(SaleRequestDto saleRequestDto) {
+    public SaleResponseDto createSale(SaleRequestDto saleRequestDto) {
         return saleMapper.toResponseDTO(
                 saleRepository.save(
                         saleMapper.toEntity(saleRequestDto)));

@@ -20,7 +20,7 @@ public class SaleController {
 
     @PostMapping
     public SaleResponseDto create(@Valid @RequestBody SaleRequestDto saleRequestDto) {
-        return saleService.saveSale(saleRequestDto);
+        return saleService.createSale(saleRequestDto);
     }
 
     @GetMapping

@@ -20,7 +20,7 @@ public class CustomerController {
 
     @PostMapping
     public CustomerResponseDto create(@Valid @RequestBody CustomerRequestDto customerRequestDto) {
-        return customerService.saveCustomer(customerRequestDto);
+        return customerService.createCustomer(customerRequestDto);
     }
 
     @GetMapping

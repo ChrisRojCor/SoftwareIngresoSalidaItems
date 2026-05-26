@@ -23,7 +23,7 @@ public class WorkOrderService {
         this.workOrderMapper = workOrderMapper;
     }
 
-    public WorkOrderResponseDto saveWorkOrder(WorkOrderRequestDto workOrderRequestDto) {
+    public WorkOrderResponseDto createWorkOrder(WorkOrderRequestDto workOrderRequestDto) {
         return workOrderMapper.toResponseDTO(
                 workOrderRepository.save(
                         workOrderMapper.toEntity(workOrderRequestDto)));

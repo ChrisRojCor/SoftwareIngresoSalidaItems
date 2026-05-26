@@ -23,7 +23,7 @@ public class ItemService {
         this.itemMapper = itemMapper;
     }
 
-    public ItemResponseDto saveItem(ItemRequestDto itemRequestDto) {
+    public ItemResponseDto createItem(ItemRequestDto itemRequestDto) {
         return itemMapper.toResponseDTO(
                 itemRepository.save(
                         itemMapper.toEntity(itemRequestDto)));

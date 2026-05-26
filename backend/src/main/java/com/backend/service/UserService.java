@@ -26,7 +26,7 @@ public class UserService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public UserResponseDto saveUser(UserRequestDto dto) {
+    public UserResponseDto createUser(UserRequestDto dto) {
         User user = userMapper.toEntity(dto);
         user.setPassword(passwordEncoder.encode(dto.getPassword()));
         return userMapper.toResponseDTO(userRepository.save(user));

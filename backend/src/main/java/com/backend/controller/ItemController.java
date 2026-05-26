@@ -20,7 +20,7 @@ public class ItemController {
 
     @PostMapping
     public ItemResponseDto create(@Valid @RequestBody ItemRequestDto itemRequestDto) {
-        return itemService.saveItem(itemRequestDto);
+        return itemService.createItem(itemRequestDto);
     }
 
     @GetMapping
