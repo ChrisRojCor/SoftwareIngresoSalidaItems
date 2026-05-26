@@ -20,7 +20,7 @@ public class WorkOrderController {
 
     @PostMapping
     public WorkOrderResponseDto create(@Valid @RequestBody WorkOrderRequestDto workOrderRequestDto) {
-        return workOrderService.saveWorkOrder(workOrderRequestDto);
+        return workOrderService.createWorkOrder(workOrderRequestDto);
     }
 
     @GetMapping
