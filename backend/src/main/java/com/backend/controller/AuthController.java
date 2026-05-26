@@ -1,11 +1,11 @@
 package com.backend.controller;
 
+import com.backend.security.dto.AuthResponseDto;
 import com.backend.security.dto.LoginRequestDto;
 import com.backend.security.jwt.JwtService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -17,9 +17,9 @@ public class AuthController {
     private final JwtService jwtService;
 
     @PostMapping("/login")
-    public String login(@RequestBody LoginRequestDto request) {
+    public AuthResponseDto login(@RequestBody LoginRequestDto request) {
 
-        Authentication authentication = authenticationManager.authenticate(
+        authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         request.getEmail(),
                         request.getPassword()
@@ -28,7 +28,6 @@ public class AuthController {
 
         String token = jwtService.generateToken(request.getEmail());
 
-
-        return token;
+        return new AuthResponseDto(token);
     }
 }
