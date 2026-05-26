@@ -4,7 +4,9 @@ import com.backend.model.enums.ServiceStatus;
 import com.backend.model.enums.ServiceType;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import lombok.Data;
 
+@Data
 public class WorkOrderRequestDto {
 
     @NotNull
@@ -15,28 +17,4 @@ public class WorkOrderRequestDto {
 
     @Size(max = 2000)
     private String diagnosis;
-
-    public ServiceType getType() {
-        return type;
-    }
-
-    public void setType(ServiceType type) {
-        this.type = type;
-    }
-
-    public ServiceStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(ServiceStatus status) {
-        this.status = status;
-    }
-
-    public String getDiagnosis() {
-        return diagnosis;
-    }
-
-    public void setDiagnosis(String diagnosis) {
-        this.diagnosis = diagnosis;
-    }
 }
