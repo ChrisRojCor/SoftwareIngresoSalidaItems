@@ -33,20 +33,20 @@ public class CustomerService {
                 customerRepository.findAll());
     }
 
-    public CustomerResponseDto getCustomerById(int id) {
+    public CustomerResponseDto getCustomerById(String id) {
         return customerMapper.toResponseDTO(
                 customerRepository.findById(id)
                         .orElseThrow(() -> new EntityNotFoundException("Customer not found: " + id)));
     }
 
-    public CustomerResponseDto updateCustomer(int id, CustomerRequestDto dto) {
+    public CustomerResponseDto updateCustomer(String id, CustomerRequestDto dto) {
         Customer customer = customerRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Customer not found: " + id));
         customerMapper.merge(customer, dto);
         return customerMapper.toResponseDTO(customerRepository.save(customer));
     }
 
-    public void deleteCustomerById(int id) {
+    public void deleteCustomerById(String id) {
         customerRepository.deleteById(id);
     }
 }

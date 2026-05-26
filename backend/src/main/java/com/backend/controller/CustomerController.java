@@ -29,17 +29,17 @@ public class CustomerController {
     }
 
     @GetMapping("{id}")
-    public CustomerResponseDto getCustomerById(@PathVariable Integer id) {
+    public CustomerResponseDto getCustomerById(@PathVariable String id) {
         return customerService.getCustomerById(id);
     }
 
     @DeleteMapping("{id}")
-    public void deleteCustomer(@PathVariable Integer id) {
+    public void deleteCustomer(@PathVariable String id) {
         customerService.deleteCustomerById(id);
     }
 
     @PutMapping("/{id}")
-    public CustomerResponseDto updateCustomer(@PathVariable Integer id, @Valid @RequestBody CustomerRequestDto customerRequestDto) {
+    public CustomerResponseDto updateCustomer(@PathVariable String id, @Valid @RequestBody CustomerRequestDto customerRequestDto) {
         return customerService.updateCustomer(id, customerRequestDto);
     }
 }
