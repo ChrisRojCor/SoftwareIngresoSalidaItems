@@ -35,7 +35,8 @@ public class CustomerService {
 
     public CustomerResponseDto getCustomerById(int id) {
         return customerMapper.toResponseDTO(
-                customerRepository.findById(id).orElse(null));
+                customerRepository.findById(id)
+                        .orElseThrow(() -> new EntityNotFoundException("Customer not found: " + id)));
     }
 
     public CustomerResponseDto updateCustomer(int id, CustomerRequestDto dto) {

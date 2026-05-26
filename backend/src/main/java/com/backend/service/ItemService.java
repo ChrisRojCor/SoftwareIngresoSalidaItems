@@ -36,7 +36,8 @@ public class ItemService {
 
     public ItemResponseDto getItemById(String id) {
         return itemMapper.toResponseDTO(
-                itemRepository.findById(id).orElse(null));
+                itemRepository.findById(id)
+                        .orElseThrow(() -> new EntityNotFoundException("Item not found: " + id)));
     }
 
     public ItemResponseDto updateItem(ItemRequestDto dto) {

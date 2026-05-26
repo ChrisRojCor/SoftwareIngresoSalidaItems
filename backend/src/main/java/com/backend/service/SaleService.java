@@ -36,7 +36,8 @@ public class SaleService {
 
     public SaleResponseDto getSaleById(int id) {
         return saleMapper.toResponseDTO(
-                saleRepository.findById(id).orElse(null));
+                saleRepository.findById(id)
+                        .orElseThrow(() -> new EntityNotFoundException("Sale not found: " + id)));
     }
 
     public SaleResponseDto updateSale(int saleNumber, SaleRequestDto dto) {

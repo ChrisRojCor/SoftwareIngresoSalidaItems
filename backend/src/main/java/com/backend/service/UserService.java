@@ -39,7 +39,8 @@ public class UserService {
 
     public UserResponseDto getUserById(int id) {
         return userMapper.toResponseDTO(
-                userRepository.findById(id).orElse(null));
+                userRepository.findById(id)
+                        .orElseThrow(() -> new EntityNotFoundException("User not found: " + id)));
     }
 
     public UserResponseDto updateUser(int id, UserRequestDto dto) {

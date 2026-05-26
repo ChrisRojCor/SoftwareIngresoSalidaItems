@@ -36,7 +36,8 @@ public class WorkOrderService {
 
     public WorkOrderResponseDto getWorkOrderById(int id) {
         return workOrderMapper.toResponseDTO(
-                workOrderRepository.findById(id).orElse(null));
+                workOrderRepository.findById(id)
+                        .orElseThrow(() -> new EntityNotFoundException("WorkOrder not found: " + id)));
     }
 
     public WorkOrderResponseDto updateWorkOrder(int serviceNumber, WorkOrderRequestDto dto) {
