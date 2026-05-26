@@ -4,12 +4,14 @@ import com.backend.model.dto.UserRequestDto;
 import com.backend.model.dto.UserResponseDto;
 import com.backend.service.UserService;
 import jakarta.validation.Valid;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("user")
+@PreAuthorize("hasRole('ADMIN')")
 public class UserController {
 
     private final UserService userService;
