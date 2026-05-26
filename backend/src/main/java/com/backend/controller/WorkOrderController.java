@@ -19,27 +19,27 @@ public class WorkOrderController {
     }
 
     @PostMapping
-    public WorkOrderResponseDto create(@Valid @RequestBody WorkOrderRequestDto workOrderRequestDto) {
+    public WorkOrderResponseDto createWorkOrder(@Valid @RequestBody WorkOrderRequestDto workOrderRequestDto) {
         return workOrderService.createWorkOrder(workOrderRequestDto);
     }
 
     @GetMapping
-    public List<WorkOrderResponseDto> read() {
+    public List<WorkOrderResponseDto> getAllWorkOrders() {
         return workOrderService.getAllWorkOrders();
     }
 
     @GetMapping("/{id}")
-    public WorkOrderResponseDto readById(@PathVariable int id) {
+    public WorkOrderResponseDto getWorkOrderById(@PathVariable int id) {
         return workOrderService.getWorkOrderById(id);
     }
 
     @DeleteMapping("/{id}")
-    public void delete(@PathVariable Integer id) {
+    public void deleteWorkOrder(@PathVariable Integer id) {
         workOrderService.deleteWorkOrder(id);
     }
 
     @PutMapping("/{id}")
-    public WorkOrderResponseDto update(@PathVariable int id, @Valid @RequestBody WorkOrderRequestDto workOrderRequestDto) {
+    public WorkOrderResponseDto updateWorkOrder(@PathVariable int id, @Valid @RequestBody WorkOrderRequestDto workOrderRequestDto) {
         return workOrderService.updateWorkOrder(id, workOrderRequestDto);
     }
 }

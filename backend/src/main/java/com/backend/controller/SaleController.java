@@ -19,27 +19,27 @@ public class SaleController {
     }
 
     @PostMapping
-    public SaleResponseDto create(@Valid @RequestBody SaleRequestDto saleRequestDto) {
+    public SaleResponseDto createSale(@Valid @RequestBody SaleRequestDto saleRequestDto) {
         return saleService.createSale(saleRequestDto);
     }
 
     @GetMapping
-    public List<SaleResponseDto> read() {
+    public List<SaleResponseDto> getAllSales() {
         return saleService.getAllSales();
     }
 
     @GetMapping("{id}")
-    public SaleResponseDto readById(@PathVariable Integer id) {
+    public SaleResponseDto getSaleById(@PathVariable Integer id) {
         return saleService.getSaleById(id);
     }
 
     @DeleteMapping("{id}")
-    public void delete(@PathVariable Integer id) {
+    public void deleteSale(@PathVariable Integer id) {
         saleService.deleteSaleById(id);
     }
 
     @PutMapping("/{id}")
-    public SaleResponseDto update(@PathVariable int id, @Valid @RequestBody SaleRequestDto saleRequestDto) {
+    public SaleResponseDto updateSale(@PathVariable int id, @Valid @RequestBody SaleRequestDto saleRequestDto) {
         return saleService.updateSale(id, saleRequestDto);
     }
 }

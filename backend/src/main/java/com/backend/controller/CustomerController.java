@@ -19,27 +19,27 @@ public class CustomerController {
     }
 
     @PostMapping
-    public CustomerResponseDto create(@Valid @RequestBody CustomerRequestDto customerRequestDto) {
+    public CustomerResponseDto createCustomer(@Valid @RequestBody CustomerRequestDto customerRequestDto) {
         return customerService.createCustomer(customerRequestDto);
     }
 
     @GetMapping
-    public List<CustomerResponseDto> read() {
+    public List<CustomerResponseDto> getAllCustomers() {
         return customerService.getAllCustomers();
     }
 
     @GetMapping("{id}")
-    public CustomerResponseDto readById(@PathVariable Integer id) {
+    public CustomerResponseDto getCustomerById(@PathVariable Integer id) {
         return customerService.getCustomerById(id);
     }
 
     @DeleteMapping("{id}")
-    public void delete(@PathVariable Integer id) {
+    public void deleteCustomer(@PathVariable Integer id) {
         customerService.deleteCustomerById(id);
     }
 
     @PutMapping("/{id}")
-    public CustomerResponseDto update(@PathVariable Integer id, @Valid @RequestBody CustomerRequestDto customerRequestDto) {
+    public CustomerResponseDto updateCustomer(@PathVariable Integer id, @Valid @RequestBody CustomerRequestDto customerRequestDto) {
         return customerService.updateCustomer(id, customerRequestDto);
     }
 }

@@ -19,27 +19,27 @@ public class ItemController {
     }
 
     @PostMapping
-    public ItemResponseDto create(@Valid @RequestBody ItemRequestDto itemRequestDto) {
+    public ItemResponseDto createItem(@Valid @RequestBody ItemRequestDto itemRequestDto) {
         return itemService.createItem(itemRequestDto);
     }
 
     @GetMapping
-    public List<ItemResponseDto> read() {
+    public List<ItemResponseDto> getAllItems() {
         return itemService.getAllItems();
     }
 
     @GetMapping("{id}")
-    public ItemResponseDto readById(@PathVariable String id) {
+    public ItemResponseDto getItemById(@PathVariable String id) {
         return itemService.getItemById(id);
     }
 
     @DeleteMapping("{id}")
-    public void delete(@PathVariable String id) {
+    public void deleteItem(@PathVariable String id) {
         itemService.deleteItemById(id);
     }
 
     @PutMapping("/{id}")
-    public ItemResponseDto update(@PathVariable String id, @Valid @RequestBody ItemRequestDto itemRequestDto) {
+    public ItemResponseDto updateItem(@PathVariable String id, @Valid @RequestBody ItemRequestDto itemRequestDto) {
         return itemService.updateItem(id, itemRequestDto);
     }
 }

@@ -21,27 +21,27 @@ public class UserController {
     }
 
     @PostMapping
-    public UserResponseDto create(@Valid @RequestBody UserRequestDto userRequestDto) {
+    public UserResponseDto createUser(@Valid @RequestBody UserRequestDto userRequestDto) {
         return userService.createUser(userRequestDto);
     }
 
     @GetMapping
-    public List<UserResponseDto> read() {
+    public List<UserResponseDto> getAllUsers() {
         return userService.getAllUsers();
     }
 
     @GetMapping("{id}")
-    public UserResponseDto readById(@PathVariable Integer id) {
+    public UserResponseDto getUserById(@PathVariable Integer id) {
         return userService.getUserById(id);
     }
 
     @DeleteMapping("{id}")
-    public void delete(@PathVariable Integer id) {
+    public void deleteUser(@PathVariable Integer id) {
         userService.deleteUserById(id);
     }
 
     @PutMapping("/{id}")
-    public UserResponseDto update(@PathVariable int id, @Valid @RequestBody UserRequestDto userRequestDto) {
+    public UserResponseDto updateUser(@PathVariable int id, @Valid @RequestBody UserRequestDto userRequestDto) {
         return userService.updateUser(id, userRequestDto);
     }
 }
