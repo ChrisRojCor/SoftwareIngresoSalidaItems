@@ -33,11 +33,10 @@ public class SecurityConfig {
             .exceptionHandling(ex -> ex.authenticationEntryPoint(jwtAuthenticationEntryPoint))
                 .exceptionHandling(ex -> ex.accessDeniedHandler(customAccessDeniedHandler))
             .authorizeHttpRequests(auth -> auth
-            .requestMatchers("/auth/**").permitAll()
-                .requestMatchers("/admin/**").hasRole("ADMIN")
-                .requestMatchers("/technician/**").hasRole("TECHNICIAN")
-                .requestMatchers("/receptionist/**").hasRole("RECEPTIONIST")
-            .anyRequest().authenticated()
+                .requestMatchers("/auth/**").permitAll()
+                .requestMatchers("/work-orders/**").hasAnyRole("ADMIN", "TECHNICIAN")
+                .requestMatchers("/customers/**", "/items/**", "/sales/**").hasAnyRole("ADMIN", "RECEPTIONIST")
+                .anyRequest().hasRole("ADMIN")
         );
 
         http.addFilterBefore(
