@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("items")
+@RequestMapping("/items")
 public class ItemController {
 
     private final ItemService itemService;
@@ -38,8 +38,8 @@ public class ItemController {
         itemService.deleteItemById(id);
     }
 
-    @PutMapping
-    public ItemResponseDto update(@Valid @RequestBody ItemRequestDto itemRequestDto) {
-        return itemService.updateItem(itemRequestDto);
+    @PutMapping("/{id}")
+    public ItemResponseDto update(@PathVariable String id, @Valid @RequestBody ItemRequestDto itemRequestDto) {
+        return itemService.updateItem(id, itemRequestDto);
     }
 }

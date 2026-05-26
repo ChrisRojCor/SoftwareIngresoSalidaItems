@@ -40,9 +40,9 @@ public class ItemService {
                         .orElseThrow(() -> new EntityNotFoundException("Item not found: " + id)));
     }
 
-    public ItemResponseDto updateItem(ItemRequestDto dto) {
-        Item item = itemRepository.findById(dto.getId())
-                .orElseThrow(() -> new EntityNotFoundException("Item not found: " + dto.getId()));
+    public ItemResponseDto updateItem(String id, ItemRequestDto dto) {
+        Item item = itemRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Item not found: " + id));
         itemMapper.merge(item, dto);
         return itemMapper.toResponseDTO(itemRepository.save(item));
     }
