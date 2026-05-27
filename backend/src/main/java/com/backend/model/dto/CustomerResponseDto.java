@@ -2,6 +2,8 @@ package com.backend.model.dto;
 
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 @Data
 public class CustomerResponseDto {
 
@@ -9,7 +11,8 @@ public class CustomerResponseDto {
     private String customerName;
     private String businessName;
     private String phone;
-    private String contactEmail;
+    private String email;
     private String address;
     private String city;
+    private LocalDateTime createdAt;
 }

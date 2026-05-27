@@ -17,7 +17,7 @@ public class CustomerMapper {
         customer.setCustomerName(dto.getCustomerName());
         customer.setBusinessName(dto.getBusinessName());
         customer.setPhone(dto.getPhone());
-        customer.setContactEmail(dto.getContactEmail());
+        customer.setEmail(dto.getEmail());
         customer.setAddress(dto.getAddress());
         customer.setCity(dto.getCity());
         return customer;
@@ -29,9 +29,10 @@ public class CustomerMapper {
         dto.setCustomerName(customer.getCustomerName());
         dto.setBusinessName(customer.getBusinessName());
         dto.setPhone(customer.getPhone());
-        dto.setContactEmail(customer.getContactEmail());
+        dto.setEmail(customer.getEmail());
         dto.setAddress(customer.getAddress());
         dto.setCity(customer.getCity());
+        dto.setCreatedAt(customer.getCreatedAt());
         return dto;
     }
 
@@ -39,7 +40,7 @@ public class CustomerMapper {
         existing.setCustomerName(dto.getCustomerName());
         existing.setBusinessName(dto.getBusinessName());
         existing.setPhone(dto.getPhone());
-        existing.setContactEmail(dto.getContactEmail());
+        existing.setEmail(dto.getEmail());
         existing.setAddress(dto.getAddress());
         existing.setCity(dto.getCity());
     }

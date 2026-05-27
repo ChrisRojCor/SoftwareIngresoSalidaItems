@@ -2,7 +2,6 @@ package com.backend.model.dto;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
@@ -16,16 +15,16 @@ public class CustomerRequestDto {
     @Size(max = 100)
     private String customerName;
 
-    @Size(max = 100)
+    @Size(max = 150)
     private String businessName;
 
     @NotBlank
-    @Pattern(regexp = "\\d{10,15}")
+    @Size(max = 20)
     private String phone;
 
-    @NotBlank
     @Email
-    private String contactEmail;
+    @Size(max = 150)
+    private String email;
 
     @Size(max = 255)
     private String address;
