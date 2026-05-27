@@ -17,6 +17,7 @@ public class ItemMapper {
         item.setName(dto.getName());
         item.setModel(dto.getModel());
         item.setBrand(dto.getBrand());
+        item.setDescription(dto.getDescription());
         return item;
     }
 
@@ -26,6 +27,8 @@ public class ItemMapper {
         dto.setName(item.getName());
         dto.setModel(item.getModel());
         dto.setBrand(item.getBrand());
+        dto.setDescription(item.getDescription());
+        dto.setCreatedAt(item.getCreatedAt());
         return dto;
     }
 
@@ -33,6 +36,7 @@ public class ItemMapper {
         existing.setName(dto.getName());
         existing.setModel(dto.getModel());
         existing.setBrand(dto.getBrand());
+        existing.setDescription(dto.getDescription());
     }
 
     public List<ItemResponseDto> toResponseDTOList(List<Item> items) {

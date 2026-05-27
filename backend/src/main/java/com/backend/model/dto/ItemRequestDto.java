@@ -14,10 +14,14 @@ public class ItemRequestDto {
     @Size(max = 100)
     private String name;
 
+    @NotBlank
     @Size(max = 100)
     private String model;
 
     @NotBlank
     @Size(max = 100)
     private String brand;
+
+    @Size(max = 255)
+    private String description;
 }

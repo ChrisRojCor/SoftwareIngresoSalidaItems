@@ -2,6 +2,8 @@ package com.backend.model.dto;
 
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 @Data
 public class ItemResponseDto {
 
@@ -9,4 +11,6 @@ public class ItemResponseDto {
     private String name;
     private String model;
     private String brand;
+    private String description;
+    private LocalDateTime createdAt;
 }
