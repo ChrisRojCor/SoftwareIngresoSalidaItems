@@ -20,8 +20,12 @@ public class SaleMapper {
 
     public Sale toEntity(SaleRequestDto dto) {
         Sale sale = new Sale();
-        sale.setAmount(dto.getAmount());
         sale.setDiscount(dto.getDiscount());
+        sale.setTax(dto.getTax());
+        sale.setSubtotal(dto.getSubtotal());
+        sale.setTotal(dto.getTotal());
+        sale.setPaymentMethod(dto.getPaymentMethod());
+        sale.setStatus(dto.getStatus());
         if (dto.getDetails() != null) {
             sale.setDetails(dto.getDetails().stream()
                     .map(detailDto -> {
@@ -36,10 +40,16 @@ public class SaleMapper {
 
     public SaleResponseDto toResponseDTO(Sale sale) {
         SaleResponseDto dto = new SaleResponseDto();
-        dto.setSaleNumber(sale.getSaleNumber());
-        dto.setAmount(sale.getAmount());
+        dto.setId(sale.getId());
+        dto.setCustomerId(sale.getCustomer().getId());
+        dto.setSellerId(sale.getSeller().getId());
         dto.setDiscount(sale.getDiscount());
-        dto.setDate(sale.getDate());
+        dto.setTax(sale.getTax());
+        dto.setSubtotal(sale.getSubtotal());
+        dto.setTotal(sale.getTotal());
+        dto.setPaymentMethod(sale.getPaymentMethod());
+        dto.setStatus(sale.getStatus());
+        dto.setCreatedAt(sale.getCreatedAt());
         if (sale.getDetails() != null) {
             dto.setDetails(sale.getDetails().stream()
                     .map(saleDetailMapper::toResponseDTO)
@@ -49,8 +59,12 @@ public class SaleMapper {
     }
 
     public void merge(Sale existing, SaleRequestDto dto) {
-        existing.setAmount(dto.getAmount());
         existing.setDiscount(dto.getDiscount());
+        existing.setTax(dto.getTax());
+        existing.setSubtotal(dto.getSubtotal());
+        existing.setTotal(dto.getTotal());
+        existing.setPaymentMethod(dto.getPaymentMethod());
+        existing.setStatus(dto.getStatus());
         if (dto.getDetails() != null) {
             existing.getDetails().clear();
             dto.getDetails().forEach(detailDto -> {

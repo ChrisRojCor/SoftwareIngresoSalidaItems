@@ -18,11 +18,15 @@ public class SaleDetail {
     private int id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "sale_number")
+    @JoinColumn(name = "sale_id")
     private Sale sale;
 
     private String itemDescription;
     private int quantity;
+
+    @Column(precision = 10, scale = 2)
     private BigDecimal unitPrice;
+
+    @Column(precision = 10, scale = 2)
     private BigDecimal lineTotal;
 }
