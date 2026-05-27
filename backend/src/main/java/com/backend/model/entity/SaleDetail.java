@@ -1,6 +1,7 @@
 package com.backend.model.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.NoArgsConstructor;
@@ -18,15 +19,22 @@ public class SaleDetail {
     private int id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "sale_id")
+    @JoinColumn(name = "sale_id", nullable = false)
     private Sale sale;
 
-    private String itemDescription;
-    private int quantity;
+    @Column(name = "sale_id", insertable = false, updatable = false)
+    private int saleId;
 
-    @Column(precision = 10, scale = 2)
+    @Column(nullable = false)
+    private String itemId;
+
+    @Min(1)
+    @Column(nullable = false)
+    private int quantity = 1;
+
+    @Column(precision = 10, scale = 2, nullable = false)
     private BigDecimal unitPrice;
 
-    @Column(precision = 10, scale = 2)
-    private BigDecimal lineTotal;
+    @Column(precision = 10, scale = 2, nullable = false)
+    private BigDecimal subtotal;
 }

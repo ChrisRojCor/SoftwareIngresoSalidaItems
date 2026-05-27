@@ -8,8 +8,9 @@ import java.math.BigDecimal;
 public class SaleDetailResponseDto {
 
     private int id;
-    private String itemDescription;
+    private int saleId;
+    private String itemId;
     private int quantity;
     private BigDecimal unitPrice;
-    private BigDecimal lineTotal;
+    private BigDecimal subtotal;
 }

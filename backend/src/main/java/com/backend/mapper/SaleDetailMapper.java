@@ -14,28 +14,29 @@ public class SaleDetailMapper {
 
     public SaleDetail toEntity(SaleDetailRequestDto dto) {
         SaleDetail detail = new SaleDetail();
-        detail.setItemDescription(dto.getItemDescription());
+        detail.setItemId(dto.getItemId());
         detail.setQuantity(dto.getQuantity());
         detail.setUnitPrice(dto.getUnitPrice());
-        detail.setLineTotal(dto.getUnitPrice().multiply(BigDecimal.valueOf(dto.getQuantity())));
+        detail.setSubtotal(dto.getUnitPrice().multiply(BigDecimal.valueOf(dto.getQuantity())));
         return detail;
     }
 
     public SaleDetailResponseDto toResponseDTO(SaleDetail detail) {
         SaleDetailResponseDto dto = new SaleDetailResponseDto();
         dto.setId(detail.getId());
-        dto.setItemDescription(detail.getItemDescription());
+        dto.setSaleId(detail.getSaleId());
+        dto.setItemId(detail.getItemId());
         dto.setQuantity(detail.getQuantity());
         dto.setUnitPrice(detail.getUnitPrice());
-        dto.setLineTotal(detail.getLineTotal());
+        dto.setSubtotal(detail.getSubtotal());
         return dto;
     }
 
     public void merge(SaleDetail existing, SaleDetailRequestDto dto) {
-        existing.setItemDescription(dto.getItemDescription());
+        existing.setItemId(dto.getItemId());
         existing.setQuantity(dto.getQuantity());
         existing.setUnitPrice(dto.getUnitPrice());
-        existing.setLineTotal(dto.getUnitPrice().multiply(BigDecimal.valueOf(dto.getQuantity())));
+        existing.setSubtotal(dto.getUnitPrice().multiply(BigDecimal.valueOf(dto.getQuantity())));
     }
 
     public List<SaleDetailResponseDto> toResponseDTOList(List<SaleDetail> details) {
