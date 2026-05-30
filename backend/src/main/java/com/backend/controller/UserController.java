@@ -2,6 +2,7 @@ package com.backend.controller;
 
 import com.backend.model.dto.UserRequestDto;
 import com.backend.model.dto.UserResponseDto;
+import com.backend.security.config.Roles;
 import com.backend.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -11,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/users")
-@PreAuthorize("hasRole('ADMIN')")
+@PreAuthorize("hasRole('" + Roles.ADMIN + "')")
 public class UserController {
 
     private final UserService userService;

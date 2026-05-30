@@ -1,5 +1,6 @@
 package com.backend.security.filter;
 
+import com.backend.security.handler.JwtAuthenticationEntryPoint;
 import com.backend.security.jwt.JwtService;
 import io.jsonwebtoken.JwtException;
 import jakarta.servlet.FilterChain;
@@ -9,6 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import lombok.RequiredArgsConstructor;
 
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -24,6 +26,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private final JwtService jwtService;
     private final UserDetailsService userDetailsService;
+    private final JwtAuthenticationEntryPoint authenticationEntryPoint;
 
     @Override
     protected void doFilterInternal(
@@ -60,15 +63,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
             }
         } catch (JwtException e) {
-            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-            response.setContentType("application/json");
-            response.getWriter().write("""
-                {
-                    "status": 401,
-                    "error": "Unauthorized",
-                    "message": "Invalid or missing token"
-                }
-                """);
+            SecurityContextHolder.clearContext();
+            authenticationEntryPoint.commence(request, response, new BadCredentialsException("Invalid or missing token"));
             return;
         }
 

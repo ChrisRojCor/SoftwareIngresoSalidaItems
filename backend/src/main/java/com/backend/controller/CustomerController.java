@@ -2,14 +2,17 @@ package com.backend.controller;
 
 import com.backend.model.dto.CustomerRequestDto;
 import com.backend.model.dto.CustomerResponseDto;
+import com.backend.security.config.Roles;
 import com.backend.service.CustomerService;
 import jakarta.validation.Valid;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/customers")
+@PreAuthorize("hasRole('" + Roles.ADMIN + "') or hasRole('" + Roles.RECEPTIONIST + "')")
 public class CustomerController {
 
     private final CustomerService customerService;

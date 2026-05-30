@@ -2,14 +2,17 @@ package com.backend.controller;
 
 import com.backend.model.dto.WorkOrderRequestDto;
 import com.backend.model.dto.WorkOrderResponseDto;
+import com.backend.security.config.Roles;
 import com.backend.service.WorkOrderService;
 import jakarta.validation.Valid;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/work-orders")
+@PreAuthorize("hasRole('" + Roles.ADMIN + "') or hasRole('" + Roles.TECHNICIAN + "')")
 public class WorkOrderController {
 
     private final WorkOrderService workOrderService;

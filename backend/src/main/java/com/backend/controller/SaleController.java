@@ -2,14 +2,17 @@ package com.backend.controller;
 
 import com.backend.model.dto.SaleRequestDto;
 import com.backend.model.dto.SaleResponseDto;
+import com.backend.security.config.Roles;
 import com.backend.service.SaleService;
 import jakarta.validation.Valid;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/sales")
+@PreAuthorize("hasRole('" + Roles.ADMIN + "') or hasRole('" + Roles.RECEPTIONIST + "')")
 public class SaleController {
 
     private final SaleService saleService;
